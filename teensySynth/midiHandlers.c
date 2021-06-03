@@ -86,14 +86,22 @@
   void teensyMidiSystemExclusiveChunk(const byte *data, uint16_t length, bool last)
   {
 #ifdef PRINT_MIDI_MESSAGES
-
+    Serial.print("Exclusive Chunk, data=");
+    Serial.print(*data, DEC);
+    Serial.print(", length=");
+    Serial.print(length, DEC);
+    Serial.print(", last=");
+    Serial.println(last, DEC);
 #endif
   }
 
   void teensyMidiSystemExclusive(byte *data, unsigned int length)
   {
 #ifdef PRINT_MIDI_MESSAGES
-
+    Serial.print("Exclusive, data=");
+    Serial.print(*data, DEC);
+    Serial.print(", length=");
+    Serial.println(length, DEC);
 #endif
   }
 
