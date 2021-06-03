@@ -45,6 +45,7 @@ AudioSynthToneSweep tonesweeps[5];
  *                                    For higher frequency output, you must bandwidth limit your waveform data. Someday, "maxFreq" will be used to do this automatically.
  */
 AudioSynthWaveform waveforms[5];
+AudioSynthWaveform waveformMul;
 
 /* AudioSynthWaveformModulated: Create a waveform with modulation: sine, sawtooth, square, triangle, pulse, random S&H or arbitrary.
  * begin(waveform): Configure the waveform type to create.
@@ -114,20 +115,12 @@ AudioMixer4 finalMixers[2];
  *              Zero discards data without processing. 1.0 passes data directly, with minimal overhead.
  *              Signal clipping can occur when any channel has gain greater than 1.0
  */
-AudioAmplifier           amp1;
-
-/* AudioSynthWaveformSine: Create a sine wave signal
- * amplitude(level): Set the amplitude, from 0 to 1.0.
- * frequency(freq): Set the frequency, from 0 to 22000. Very low values may be used to create a LFO (Low Frequency Oscillator) for objects with modulation signal inputs.
- * phase(angle): Cause the generated waveform to jump to a specific point within its cycle. Angle is from 0 to 360 degrees.
- *               When multiple objects are configured, AudioNoInterrupts() should be used to guarantee all new settings take effect together.
- */
-AudioSynthWaveformSine   sine1;
+AudioAmplifier amp1;
 
 /* AudioEffectMultiply: Multiply two signals together, useful for amplitude modulation or "voltage controlled amplification".
  * There are no functions to call from the Arduino sketch. This object simply multiplies the 2 signals to create a continuous output. 
  */
-AudioEffectMultiply      multiply1;
+AudioEffectMultiply multiply1;
 
 /* The chorus effect simulates the richness of several nearly-identical sound sources (like the way a choir sounds different to a single singer).
  * It does this by sampling from a delay line, so each voice is actually the same but at a slightly different point in time. This is a type of comb filtering.
@@ -143,7 +136,7 @@ AudioEffectMultiply      multiply1;
  *                                       (so, 2 and up to get a chorus effect, although you can specify 1 if you want).
  * voices(n_chorus):Alters the number of voices in a running chorus (previously started with begin).
  */
-AudioEffectChorus        chorus1;
+AudioEffectChorus chorus1;
 
 /* AudioEffectFlange: Originally, flanging was produced by playing the same signal on two synchronized reel-to-reel tape recorders and
  * making one of the reels slow down and speed up by pressing on the flange of the reel (hence the name).
@@ -159,12 +152,12 @@ AudioEffectChorus        chorus1;
  *                                                       the modulation depth (larger values give a greater variation) and the modulation frequency, in Hertz.
  * voices(offset, depth, delayRate): Alters the parameters in a running flanger (previously started with begin).
  */
-AudioEffectFlange        flange1;
+AudioEffectFlange flange1;
 
 /* AudioEffectReverb: Reverb with adjustable reverberation time. Contributed by Joao Rossi FIlho.
  * reverbTime(seconds): Sets the amount of reverberation time.
  */
-AudioEffectReverb        reverb1;
+AudioEffectReverb reverb1;
 
 /* AudioEffectFreeverbStereo: High quality stereo Reverb effect, based on Freeverb by Jezar at Dreampoint.
  * Teensy 3.5 or 3.6 required to run stereo version.
@@ -178,7 +171,7 @@ AudioEffectFreeverbStereo freeverbs1;
 /* AudioOutputI2S: Transmit 16 bit stereo audio to the audio shield or another I2S device, using I2S master mode.
  * This object has no functions to call from the Arduino sketch. It simply streams data from its 2 input ports to the I2S hardware.
  */
-AudioOutputI2S           i2s1;
+AudioOutputI2S i2s1;
 
 //Sound generating connections
 AudioConnection          patchCord01(waveforms[0], 0, waveformMods[0], 1);
@@ -241,7 +234,7 @@ AudioConnection          patchCord47(finalMixers[1], amp1);
 AudioConnection          patchCord48(amp1, 0, multiply1, 0);
 
 //Effects conections
-AudioConnection          patchCord49(sine1, 0, multiply1, 1);
+AudioConnection          patchCord49(waveformMul, 0, multiply1, 1);
 AudioConnection          patchCord50(multiply1, chorus1);
 AudioConnection          patchCord51(chorus1, flange1);
 AudioConnection          patchCord52(flange1, reverb1);
