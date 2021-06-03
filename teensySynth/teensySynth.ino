@@ -1,3 +1,4 @@
+#include "teensySynth.h"
 #include <USBHost_t36.h>
 
 USBHost teensyUsbHost;
@@ -5,6 +6,18 @@ MIDIDevice teensyMidi(teensyUsbHost);
 
 void setup()
 {
+#ifdef PRINT_MIDI_MESSAGES
+    Serial.begin(115200);
+#endif
+    // Wait 1.5 seconds before turning on USB Host.
+    // If connected USB devices use too much power.
+    // Teensy at least completes USB enumeration
+    // which makes isolating the power issue easier.
+    delay(1500);
+#ifdef PRINT_MIDI_MESSAGES  
+    Serial.println("USB Host InputFunctions example");
+    delay(10);
+#endif
     teensyMidi.setHandleNoteOn(teensyMidiNoteOn);
     teensyMidi.setHandleNoteOff(teensyMidiNoteOff);
     teensyMidi.setHandleAfterTouchPoly(teensyMidiAfterTouchPoly);
