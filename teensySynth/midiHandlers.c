@@ -108,76 +108,80 @@
   void teensyMidiTimeCodeQuarterFrame(byte data)
   {
 #ifdef PRINT_MIDI_MESSAGES
-
+    Serial.print("Time Code, data=");
+    Serial.println(data, DEC);
 #endif
   }
 
   void teensyMidiSongPosition(uint16_t beats)
   {
 #ifdef PRINT_MIDI_MESSAGES
-
+    Serial.print("Song position, beats=");
+    Serial.println(beats, DEC);
 #endif
   }
 
   void teensyMidiSongSelect(byte songNumber)
   {
 #ifdef PRINT_MIDI_MESSAGES
-
+    Serial.print("Song select, number=");
+    Serial.println(songNumber, DEC);
 #endif
   }
 
   void teensyMidiTuneRequest()
   {
 #ifdef PRINT_MIDI_MESSAGES
-
+    Serial.println("Tune request");
 #endif
   }
 
   void teensyMidiClock()
   {
 #ifdef PRINT_MIDI_MESSAGES
-
+    Serial.println("Midi clock");
 #endif
   }
 
   void teensyMidiStart()
   {
 #ifdef PRINT_MIDI_MESSAGES
-
+    Serial.println("Midi start");
 #endif
   }
 
   void teensyMidiContinue()
   {
 #ifdef PRINT_MIDI_MESSAGES
-
+    Serial.println("Midi continue");
 #endif
   }
 
   void teensyMidiStop()
   {
 #ifdef PRINT_MIDI_MESSAGES
-
+    Serial.println("Midi stop");
 #endif
   }
 
   void teensyMidiActiveSensing()
   {
 #ifdef PRINT_MIDI_MESSAGES
-
+    Serial.println("Midi activate sensing");
 #endif
   }
 
   void teensyMidiSystemReset()
   {
 #ifdef PRINT_MIDI_MESSAGES
-
+    Serial.println("Midi reset");
 #endif
   }
 
   void teensyMidiRealTimeSystem(byte realtimebyte)
   {
 #ifdef PRINT_MIDI_MESSAGES
-
+    Serial.print("Real time, time=");
+    Serial.println(realtimebyte, DEC);
 #endif
   }
