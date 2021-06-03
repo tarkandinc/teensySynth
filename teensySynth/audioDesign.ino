@@ -157,17 +157,17 @@ AudioEffectFreeverbStereo freeverbs1;     //xy=2071.6786193847656,1247.821430206
 AudioOutputI2S           i2s1;           //xy=2242.6786193847656,1247.8214302062988
 
 //Sound generating connections
-AudioConnection          patchCord1(waveforms[0], 0, waveformMods[0], 1);
-AudioConnection          patchCord2(waveforms[1], 0, waveformMods[1], 1);
-AudioConnection          patchCord4(waveforms[2], 0, waveformMods[2], 1);
-AudioConnection          patchCord7(waveforms[3], 0, waveformMods[3], 1);
-AudioConnection          patchCord3(waveforms[4], 0, waveformMods[4], 1);
+AudioConnection          patchCord01(waveforms[0], 0, waveformMods[0], 1);
+AudioConnection          patchCord02(waveforms[1], 0, waveformMods[1], 1);
+AudioConnection          patchCord04(waveforms[2], 0, waveformMods[2], 1);
+AudioConnection          patchCord07(waveforms[3], 0, waveformMods[3], 1);
+AudioConnection          patchCord03(waveforms[4], 0, waveformMods[4], 1);
 
-AudioConnection          patchCord5(tonesweeps[0], 0, waveformMods[0], 0);
-AudioConnection          patchCord6(tonesweeps[1], 0, waveformMods[1], 0);
+AudioConnection          patchCord05(tonesweeps[0], 0, waveformMods[0], 0);
+AudioConnection          patchCord06(tonesweeps[1], 0, waveformMods[1], 0);
 AudioConnection          patchCord10(tonesweeps[2], 0, waveformMods[2], 0);
-AudioConnection          patchCord9(tonesweeps[3], 0, waveformMods[3], 0);
-AudioConnection          patchCord8(tonesweeps[4], 0, waveformMods[4], 0);
+AudioConnection          patchCord09(tonesweeps[3], 0, waveformMods[3], 0);
+AudioConnection          patchCord08(tonesweeps[4], 0, waveformMods[4], 0);
 
 AudioConnection          patchCord11(strings[0], 0, mixers[0], 1);
 AudioConnection          patchCord12(strings[1], 0, mixers[1], 1);
