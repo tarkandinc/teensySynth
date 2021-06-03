@@ -47,8 +47,8 @@ AudioEffectEnvelope      envelope4;      //xy=1126.250015258789,1467.50002098083
 AudioEffectEnvelope      envelope5;      //xy=1133.7500190734863,1676.2500247955322
 AudioMixer4              mixer6;         //xy=1351.2500190734863,1063.7500190734863
 AudioMixer4              mixer7;         //xy=1473.7500190734863,1252.5000228881836
+AudioSynthWaveform       waveform6;      //xy=1644,1212
 AudioAmplifier           amp1;           //xy=1648.7500267028809,1100.0000162124634
-AudioSynthWaveformSine   sine1;          //xy=1654.6786193847656,1173.8214302062988
 AudioEffectMultiply      multiply1;      //xy=1786.6786193847656,1145.8214302062988
 AudioEffectChorus        chorus1;        //xy=1928.6786193847656,1058.8214302062988
 AudioEffectFlange        flange1;        //xy=1965.6786193847656,1120.8214302062988
@@ -102,8 +102,8 @@ AudioConnection          patchCord44(envelope4, 0, mixer6, 3);
 AudioConnection          patchCord45(envelope5, 0, mixer7, 1);
 AudioConnection          patchCord46(mixer6, 0, mixer7, 0);
 AudioConnection          patchCord47(mixer7, amp1);
-AudioConnection          patchCord48(amp1, 0, multiply1, 0);
-AudioConnection          patchCord49(sine1, 0, multiply1, 1);
+AudioConnection          patchCord48(waveform6, 0, multiply1, 1);
+AudioConnection          patchCord49(amp1, 0, multiply1, 0);
 AudioConnection          patchCord50(multiply1, chorus1);
 AudioConnection          patchCord51(chorus1, flange1);
 AudioConnection          patchCord52(flange1, reverb1);
