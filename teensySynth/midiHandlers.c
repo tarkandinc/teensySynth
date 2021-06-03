@@ -19,7 +19,12 @@
   void teensyMidiNoteOff(byte channel, byte note, byte velocity)
   {
 #ifdef PRINT_MIDI_MESSAGES
-
+    Serial.print("Note Off, ch=");
+    Serial.print(channel, DEC);
+    Serial.print(", note=");
+    Serial.print(note, DEC);
+    Serial.print(", velocity=");
+    Serial.println(velocity, DEC);
 #endif
 
   }
@@ -27,35 +32,54 @@
   void teensyMidiAfterTouchPoly(byte channel, byte note, byte velocity)
   {
 #ifdef PRINT_MIDI_MESSAGES
-
+    Serial.print("AfterTouch Change, ch=");
+    Serial.print(channel, DEC);
+    Serial.print(", note=");
+    Serial.print(note, DEC);
+    Serial.print(", velocity=");
+    Serial.println(velocity, DEC);
 #endif
   }
 
   void teensyMidiControlChange(byte channel, byte control, byte value)
   {
 #ifdef PRINT_MIDI_MESSAGES
-
+    Serial.print("Control Change, ch=");
+    Serial.print(channel, DEC);
+    Serial.print(", control=");
+    Serial.print(control, DEC);
+    Serial.print(", value=");
+    Serial.println(value, DEC);
 #endif
   }
 
   void teensyMidiProgramChange(byte channel, byte program)
   {
 #ifdef PRINT_MIDI_MESSAGES
-
+    Serial.print("Program Change, ch=");
+    Serial.print(channel, DEC);
+    Serial.print(", program=");
+    Serial.println(program, DEC);
 #endif
   }
 
   void teensyMidiAfterTouch(byte channel, byte pressure)
   {
 #ifdef PRINT_MIDI_MESSAGES
-
+    Serial.print("After Touch, ch=");
+    Serial.print(channel, DEC);
+    Serial.print(", pressure=");
+    Serial.println(pressure, DEC);
 #endif
   }
 
   void teensyMidiPitchChange(byte channel, int pitch)
   {
 #ifdef PRINT_MIDI_MESSAGES
-
+    Serial.print("Pitch Change, ch=");
+    Serial.print(channel, DEC);
+    Serial.print(", pitch=");
+    Serial.println(pitch, DEC);
 #endif
   }
 
