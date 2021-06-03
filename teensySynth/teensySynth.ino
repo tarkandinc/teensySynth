@@ -32,6 +32,11 @@ void setup()
 }
 
 void loop()
-{
-  
+{  
+    // The handler functions are called when midi1 reads data.  They
+    // will not be called automatically.  You must call midi1.read()
+    // regularly from loop() for midi1 to actually read incoming
+    // data and run the handler functions as messages arrive.
+    teensyUsbHost.Task();
+    teensyMidi.read();  
 }
