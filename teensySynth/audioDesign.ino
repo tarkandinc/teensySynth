@@ -14,22 +14,12 @@
  * getEnvState();
  */
 AudioSynthWavetable wavetables[5];
-//AudioSynthWavetable      wavetable1;     //xy=665,800
-//AudioSynthWavetable      wavetable2;     //xy=669.9999694824219,1001.4286060333252
-//AudioSynthWavetable      wavetable3;     //xy=672.8571815490723,1211.4286212921143
-//AudioSynthWavetable      wavetable4;     //xy=677.5000114440918,1416.250020980835
-//AudioSynthWavetable      wavetable5;     //xy=680.0000114440918,1626.2500247955322
 
 /* AudioSynthKarplusStrong: Synthesize a plucked string sound, such as a guitar string.
  * noteOn(frequency, velocity): Begin a new string note. Velocity can be from 0 to 1.0, indicating how hard the string is plucked.
  * noteOff(velocity): Stop the sound output.
  */
 AudioSynthKarplusStrong strings[5];
-//AudioSynthKarplusStrong  string1;        //xy=653,845
-//AudioSynthKarplusStrong  string2;        //xy=661.4285583496094,1050
-//AudioSynthKarplusStrong  string3;        //xy=661.4285354614258,1258.5713720321655
-//AudioSynthKarplusStrong  string4;        //xy=667.5000114440918,1466.2500219345093
-//AudioSynthKarplusStrong  string5;        //xy=668.7500114440918,1673.7500247955322
 
 /* AudioSynthToneSweep: Create a continuously varying (in frequency) sine wave
  * play(level, lowFreq, highFreq, time): Start generating frequency sweep output. The time is specified in seconds. Level is 0 to 1.0.
@@ -37,11 +27,6 @@ AudioSynthKarplusStrong strings[5];
  * read(): Returns the current frequency, or zero if the output is not active.
  */
 AudioSynthToneSweep tonesweeps[5];
-//AudioSynthToneSweep      tonesweep1;     //xy=519,872
-//AudioSynthToneSweep      tonesweep2;     //xy=521.428581237793,1080.0001029968262
-//AudioSynthToneSweep      tonesweep3;     //xy=524.2857208251953,1284.285831451416
-//AudioSynthToneSweep      tonesweep4;     //xy=522.5000076293945,1495.0000228881836
-//AudioSynthToneSweep      tonesweep5;     //xy=520.0000076293945,1702.5000247955322
 
 /* AudioSynthWaveform: Create a waveform: sine, sawtooth, square, triangle, pulse, random S&H or arbitrary.
  * begin(waveform): Configure the waveform type to create.
@@ -60,11 +45,6 @@ AudioSynthToneSweep tonesweeps[5];
  *                                    For higher frequency output, you must bandwidth limit your waveform data. Someday, "maxFreq" will be used to do this automatically.
  */
 AudioSynthWaveform waveforms[5];
-//AudioSynthWaveform       waveform1;      //xy=514,913
-//AudioSynthWaveform       waveform2;      //xy=515.7142562866211,1124.2857131958008
-//AudioSynthWaveform       waveform3;      //xy=517.1429061889648,1329.999942779541
-//AudioSynthWaveform       waveform4;      //xy=520.0000076293945,1535.0000228881836
-//AudioSynthWaveform       waveform5;      //xy=515.0000076293945,1743.7500267028809
 
 /* AudioSynthWaveformModulated: Create a waveform with modulation: sine, sawtooth, square, triangle, pulse, random S&H or arbitrary.
  * begin(waveform): Configure the waveform type to create.
@@ -85,11 +65,6 @@ AudioSynthWaveform waveforms[5];
  *                                    For higher frequency output, you must bandwidth limit your waveform data. Someday, "maxFreq" will be used to do this automatically.
  */
 AudioSynthWaveformModulated waveformMods[5];
-//AudioSynthWaveformModulated waveformMod1;   //xy=682,890
-//AudioSynthWaveformModulated waveformMod2;   //xy=687.1428604125977,1098.5714263916016
-//AudioSynthWaveformModulated waveformMod3;   //xy=688.571460723877,1304.285779953003
-//AudioSynthWaveformModulated waveformMod4;   //xy=692.5000076293945,1512.5000228881836
-//AudioSynthWaveformModulated waveformMod5;   //xy=696.2500076293945,1722.5000247955322
 
 /* AudioSynthWaveformPWM: Create a Pulse Width Modulated waveform, with an audio signal controlling the pulse width duty cycle.
  *                        The duty cycle is 50% when the control waveform is zero.
@@ -99,11 +74,6 @@ AudioSynthWaveformModulated waveformMods[5];
  * amplitude(level): Change the amplitude. Set to 0 to turn the signal off. 
  */
 AudioSynthWaveformPWM pwms[5];
-//AudioSynthWaveformPWM    pwm1;           //xy=834,919
-//AudioSynthWaveformPWM    pwm2;           //xy=841.4286003112793,1131.4285526275635
-//AudioSynthWaveformPWM    pwm3;           //xy=842.8571815490723,1337.1429386138916
-//AudioSynthWaveformPWM    pwm4;           //xy=842.5000152587891,1545.0000228881836
-//AudioSynthWaveformPWM    pwm5;           //xy=842.5000152587891,1765.0000257492065
 
 /* AudioEffectEnvelope: Modify a signal with a DAHDSR (Delay Attack Hold Decay Sustain Release) envelope.
  * noteOn(): Begin the delay to attack, or the attack phase is delay is zero.
@@ -123,11 +93,6 @@ AudioSynthWaveformPWM pwms[5];
  * isSustain(): Returns true when the envelope is currently in the sustain phase.
  */
 AudioEffectEnvelope envelopes[5];
-//AudioEffectEnvelope      envelope1;      //xy=1124,856
-//AudioEffectEnvelope      envelope2;      //xy=1125.7142333984375,1067.1428565979004
-//AudioEffectEnvelope      envelope3;      //xy=1125.71435546875,1254
-//AudioEffectEnvelope      envelope4;      //xy=1126.250015258789,1467.500020980835
-//AudioEffectEnvelope      envelope5;      //xy=1133.7500190734863,1676.2500247955322
 
 /* AudioMixer4: Combine up to 4 audio signals together, each with adjustable gain. All channels support signal attenuation or amplification.
  * gain(channel, level): Adjust the amplification or attenuation. "channel" must be 0 to 3. "level" may be any floating point number from 0 to 32767.0. 
@@ -137,24 +102,83 @@ AudioEffectEnvelope envelopes[5];
  *                       All 4 channels have separate gain settings. 
  */
 AudioMixer4 mixers[5];
-//AudioMixer4              mixer1;         //xy=973,856
-//AudioMixer4              mixer2;         //xy=977,1068
-//AudioMixer4              mixer3;         //xy=981,1255
-//AudioMixer4              mixer4;         //xy=980.0000152587891,1468.750020980835
-//AudioMixer4              mixer5;         //xy=977.5000152587891,1677.5000247955322
 
 AudioMixer4 finalMixers[2];
-//AudioMixer4              mixer6;         //xy=1351.2500190734863,1063.7500190734863
-//AudioMixer4              mixer7;         //xy=1473.7500190734863,1252.5000228881836
 
-AudioAmplifier           amp1;           //xy=1648.7500267028809,1100.0000162124634
-AudioSynthWaveformSine   sine1;          //xy=1654.6786193847656,1173.8214302062988
-AudioEffectMultiply      multiply1;      //xy=1786.6786193847656,1145.8214302062988
-AudioEffectChorus        chorus1;        //xy=1928.6786193847656,1058.8214302062988
-AudioEffectFlange        flange1;        //xy=1965.6786193847656,1120.8214302062988
-AudioEffectReverb        reverb1;        //xy=2008.6786193847656,1184.8214302062988
-AudioEffectFreeverbStereo freeverbs1;     //xy=2071.6786193847656,1247.8214302062988
-AudioOutputI2S           i2s1;           //xy=2242.6786193847656,1247.8214302062988
+/* AudioAmplifier: Amplify or attenuate a signal, or switch it on/off.
+ * gain(level): Adjust the amplification or attenuation. "level" may be any floating point number from 0 to 32767.0. 
+ *              1.0 passes the signal through directly. Level of 0 shuts the channel off completely.
+ *              Between 0 to 1.0 attenuates the signal, and above 1.0 amplifies it.
+ *              Negative numbers may also be used, to invert the signal.
+ *              Gain of 0 and 1.0 are handled efficiently as special cases.
+ *              Zero discards data without processing. 1.0 passes data directly, with minimal overhead.
+ *              Signal clipping can occur when any channel has gain greater than 1.0
+ */
+AudioAmplifier           amp1;
+
+/* AudioSynthWaveformSine: Create a sine wave signal
+ * amplitude(level): Set the amplitude, from 0 to 1.0.
+ * frequency(freq): Set the frequency, from 0 to 22000. Very low values may be used to create a LFO (Low Frequency Oscillator) for objects with modulation signal inputs.
+ * phase(angle): Cause the generated waveform to jump to a specific point within its cycle. Angle is from 0 to 360 degrees.
+ *               When multiple objects are configured, AudioNoInterrupts() should be used to guarantee all new settings take effect together.
+ */
+AudioSynthWaveformSine   sine1;
+
+/* AudioEffectMultiply: Multiply two signals together, useful for amplitude modulation or "voltage controlled amplification".
+ * There are no functions to call from the Arduino sketch. This object simply multiplies the 2 signals to create a continuous output. 
+ */
+AudioEffectMultiply      multiply1;
+
+/* The chorus effect simulates the richness of several nearly-identical sound sources (like the way a choir sounds different to a single singer).
+ * It does this by sampling from a delay line, so each voice is actually the same but at a slightly different point in time. This is a type of comb filtering.
+ * Chorus combines one or more samples ranging from the most recent sample back to about 50ms ago.
+ * The additional samples are evenly spread through the supplied delay line, and there is no modulation.
+ * If the number of voices is specified as 2, then the effect combines the current sample and the oldest sample (the last one in the delay line).
+ * If the number of voices is 3 then the effect combines the most recent sample, the oldest sample and the sample in the middle of the delay line.
+ * For two voices the effect can be represented as: result = (sample(0) + sample(dt))/2
+ * where sample(0) represents the current sample and sample(dt) is the sample in the delay line from dt milliseconds ago.
+ * begin(delayBuffer, length, n_chorus): Create a chorus by specifying the address of the delayline,
+ *                                       the total number of samples in the delay line (often done as an integer multiple of AUDIO_BLOCK_SAMPLES)
+ *                                       and the number of voices in the chorus including the original voice
+ *                                       (so, 2 and up to get a chorus effect, although you can specify 1 if you want).
+ * voices(n_chorus):Alters the number of voices in a running chorus (previously started with begin).
+ */
+AudioEffectChorus        chorus1;
+
+/* AudioEffectFlange: Originally, flanging was produced by playing the same signal on two synchronized reel-to-reel tape recorders and
+ * making one of the reels slow down and speed up by pressing on the flange of the reel (hence the name).
+ * This is a type of comb filtering, and produces a harmonically-related series of peaks and notches in the audio spectrum.
+ * This flanger uses a delay line, combining the original voice with only one sample from the delay line, but the position of that sample varies sinusoidally.
+ * The effect can be represented as: result = sample(0) + sample(dt + depth*sin(2*PI*Fe))
+ * The value of the sine function is always a number from -1 to +1 and so the result of depth*(sin(Fe)) is always a number from -depth to +depth. 
+ * Thus, the delayed sample will be selected from the range (dt-depth) to (dt+depth).
+ * This selection will vary at whatever rate is specified as the frequency of the effect, Fe. Typically a low frequency (a few Hertz) is used.
+ * begin(delayBuffer, length, offset, depth, delayRate): Create a flanger by specifying the address of the delayline, 
+ *                                                       the total number of samples in the delay line (often done as an integer multiple of AUDIO_BLOCK_SAMPLES),
+ *                                                       the offset (how far back the flanged sample is from the original voice),
+ *                                                       the modulation depth (larger values give a greater variation) and the modulation frequency, in Hertz.
+ * voices(offset, depth, delayRate): Alters the parameters in a running flanger (previously started with begin).
+ */
+AudioEffectFlange        flange1;
+
+/* AudioEffectReverb: Reverb with adjustable reverberation time. Contributed by Joao Rossi FIlho.
+ * reverbTime(seconds): Sets the amount of reverberation time.
+ */
+AudioEffectReverb        reverb1;
+
+/* AudioEffectFreeverbStereo: High quality stereo Reverb effect, based on Freeverb by Jezar at Dreampoint.
+ * Teensy 3.5 or 3.6 required to run stereo version.
+ * roomsize(amount): Sets the amount of reverberant echo or apparent room size, from 0 (smallest) to 1.0 (largest).
+ * damping(amount): Sets the damping factor, from 0 to 1.0. More damping causes higher frequency echo to decay,
+ *                  creating a softer sound, similar to a large room filled with people or materials which absorb some sound as it travels between reflecting surfaces.
+ *                  Lower damping simulates a harsher reverberant field.
+ */
+AudioEffectFreeverbStereo freeverbs1;
+
+/* AudioOutputI2S: Transmit 16 bit stereo audio to the audio shield or another I2S device, using I2S master mode.
+ * This object has no functions to call from the Arduino sketch. It simply streams data from its 2 input ports to the I2S hardware.
+ */
+AudioOutputI2S           i2s1;
 
 //Sound generating connections
 AudioConnection          patchCord01(waveforms[0], 0, waveformMods[0], 1);
