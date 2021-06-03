@@ -1,4 +1,5 @@
 #include "teensySynth.h"
+#include "audioDesign.h"
 
 void teensyMidiNoteOn(byte channel, byte note, byte velocity)
   {
@@ -13,7 +14,7 @@ void teensyMidiNoteOn(byte channel, byte note, byte velocity)
     Serial.print(", velocity=");
     Serial.println(velocity, DEC);
 #endif
-
+    //example: wavetables[0].amplitude(100);
   }
 
   void teensyMidiNoteOff(byte channel, byte note, byte velocity)
