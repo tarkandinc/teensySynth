@@ -63,7 +63,7 @@ void teensyMidiNoteOn(byte channel, byte note, byte velocity)
 #endif
   }
 
-  void teensyMidiAfterTouch(byte channel, byte pressure)
+  void teensyMidiAfterTouchChannel(byte channel, byte pressure)
   {
 #ifdef PRINT_MIDI_MESSAGES
     Serial.print("After Touch, ch=");
