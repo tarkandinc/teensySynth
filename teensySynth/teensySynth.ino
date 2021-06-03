@@ -16,7 +16,7 @@ void setup()
     // which makes isolating the power issue easier.
     delay(1500);
 #ifdef PRINT_MIDI_MESSAGES  
-    Serial.println("USB Host InputFunctions example");
+    Serial.println("USB MIDI Messages");
     delay(10);
 #endif
     teensyMidi.setHandleNoteOn(teensyMidiNoteOn);
