@@ -12,8 +12,8 @@ void setup()
     teensyMidi.setHandleProgramChange(teensyMidiProgramChange);
     teensyMidi.setHandleAfterTouchChannel(teensyMidiAfterTouchChannel);
     teensyMidi.setHandlePitchChange(teensyMidiPitchChange);
-  // Only one of these System Exclusive handlers will actually be
-  // used.  See the comments below for the difference between them.
+    // Only one of these System Exclusive handlers will actually be used.
+    // See the comments below for the difference between them.
     teensyMidi.setHandleSystemExclusive(teensyMidiSystemExclusiveChunk);
     teensyMidi.setHandleSystemExclusive(teensyMidiSystemExclusive); 
     teensyMidi.setHandleTimeCodeQuarterFrame(teensyMidiTimeCodeQuarterFrame);
