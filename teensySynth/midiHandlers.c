@@ -1,6 +1,6 @@
-  #include "teensySynth.h"
+#include "teensySynth.h"
 
-  void teensyMidiNoteOn(byte channel, byte note, byte velocity)
+void teensyMidiNoteOn(byte channel, byte note, byte velocity)
   {
     // When a USB device with multiple virtual cables is used,
     // midi.getCable() can be used to read which of the virtual
