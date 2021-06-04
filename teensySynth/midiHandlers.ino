@@ -40,6 +40,7 @@ void teensyMidiNoteOn(byte channel, byte note, byte velocity)
     Serial.print(", velocity=");
     Serial.println(velocity, DEC);
 #endif
+
   }
 
   void teensyMidiControlChange(byte channel, byte control, byte value)
