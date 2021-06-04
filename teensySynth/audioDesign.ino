@@ -231,17 +231,14 @@ AudioConnection          patchCord45(envelopes[4], 0, finalMixers[1], 1);
 //Final mixer connections
 AudioConnection          patchCord46(finalMixers[0], 0, finalMixers[1], 0);
 AudioConnection          patchCord47(finalMixers[1], amp1);
-//AudioConnection          patchCord48(amp1, 0, multiply1, 0);
 AudioConnection          patchCord48(amp1, 0, chorus1, 0);
-//AudioConnection          patchCord49(waveformMul, 0, multiply1, 1);
 
 //Effects conections
-//AudioConnection          patchCord50(multiply1, chorus1);
-AudioConnection          patchCord51(chorus1, flange1);
-AudioConnection          patchCord52(flange1, reverb1);
-AudioConnection          patchCord53(reverb1, freeverbs1);
+AudioConnection          patchCord49(chorus1, flange1);
+AudioConnection          patchCord50(flange1, reverb1);
+AudioConnection          patchCord51(reverb1, freeverbs1);
 
 //Output connections
-AudioConnection          patchCord54(freeverbs1, 0, i2s1, 0);
-AudioConnection          patchCord55(freeverbs1, 1, i2s1, 1);
+AudioConnection          patchCord52(freeverbs1, 0, i2s1, 0);
+AudioConnection          patchCord53(freeverbs1, 1, i2s1, 1);
 // GUItool: end automatically generated code
