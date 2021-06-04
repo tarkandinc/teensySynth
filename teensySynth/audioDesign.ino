@@ -45,7 +45,7 @@ AudioSynthToneSweep tonesweeps[5];
  *                                    For higher frequency output, you must bandwidth limit your waveform data. Someday, "maxFreq" will be used to do this automatically.
  */
 AudioSynthWaveform waveforms[5];
-AudioSynthWaveform waveformMul;
+//AudioSynthWaveform waveformMul;
 
 /* AudioSynthWaveformModulated: Create a waveform with modulation: sine, sawtooth, square, triangle, pulse, random S&H or arbitrary.
  * begin(waveform): Configure the waveform type to create.
