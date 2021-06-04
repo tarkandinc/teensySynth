@@ -12,8 +12,8 @@ extern AudioMixer4 mixers[5];
 
 extern AudioMixer4 finalMixers[2];
 extern AudioAmplifier amp1;
-extern AudioSynthWaveform waveformMul;
-extern AudioEffectMultiply multiply1;
+//extern AudioSynthWaveform waveformMul;
+//extern AudioEffectMultiply multiply1;
 extern AudioEffectChorus chorus1;
 extern AudioEffectFlange flange1;
 extern AudioEffectReverb reverb1;
