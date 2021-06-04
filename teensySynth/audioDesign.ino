@@ -1,8 +1,8 @@
 #include <Audio.h>
 #include <Wire.h>
 #include <SPI.h>
-#include <SD.h>
-#include <SerialFlash.h>
+//#include <SD.h>
+//#include <SerialFlash.h>
 
 /* AudioSynthWavetable: Synthesize musical instruments using wavetable samples. Sample data is extracted from SoundFont2 files.
  * setInstrument(instrument);
