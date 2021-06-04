@@ -186,17 +186,17 @@ AudioConnection          patchCord08(tonesweeps[2], 0, waveformMods[2], 0);
 AudioConnection          patchCord09(tonesweeps[3], 0, waveformMods[3], 0);
 AudioConnection          patchCord10(tonesweeps[4], 0, waveformMods[4], 0);
 
-AudioConnection          patchCord11(strings[0], 0, mixers[0], 1);
-AudioConnection          patchCord12(strings[1], 0, mixers[1], 1);
-AudioConnection          patchCord13(strings[2], 0, mixers[2], 1);
-AudioConnection          patchCord14(strings[3], 0, mixers[3], 1);
-AudioConnection          patchCord15(strings[4], 0, mixers[4], 1);
+AudioConnection          patchCord11(wavetables[0], 0, mixers[0], 0);
+AudioConnection          patchCord12(wavetables[1], 0, mixers[1], 0);
+AudioConnection          patchCord13(wavetables[2], 0, mixers[2], 0);
+AudioConnection          patchCord14(wavetables[3], 0, mixers[3], 0);
+AudioConnection          patchCord15(wavetables[4], 0, mixers[4], 0);
 
-AudioConnection          patchCord16(wavetables[0], 0, mixers[0], 0);
-AudioConnection          patchCord17(wavetables[1], 0, mixers[1], 0);
-AudioConnection          patchCord18(wavetables[2], 0, mixers[2], 0);
-AudioConnection          patchCord19(wavetables[3], 0, mixers[3], 0);
-AudioConnection          patchCord20(wavetables[4], 0, mixers[4], 0);
+AudioConnection          patchCord16(strings[0], 0, mixers[0], 1);
+AudioConnection          patchCord17(strings[1], 0, mixers[1], 1);
+AudioConnection          patchCord18(strings[2], 0, mixers[2], 1);
+AudioConnection          patchCord19(strings[3], 0, mixers[3], 1);
+AudioConnection          patchCord20(strings[4], 0, mixers[4], 1);
 
 AudioConnection          patchCord21(waveformMods[0], pwms[0]);
 AudioConnection          patchCord22(waveformMods[1], pwms[1]);
