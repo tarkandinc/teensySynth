@@ -120,7 +120,7 @@ AudioAmplifier amp1;
 /* AudioEffectMultiply: Multiply two signals together, useful for amplitude modulation or "voltage controlled amplification".
  * There are no functions to call from the Arduino sketch. This object simply multiplies the 2 signals to create a continuous output. 
  */
-AudioEffectMultiply multiply1;
+//AudioEffectMultiply multiply1;
 
 /* The chorus effect simulates the richness of several nearly-identical sound sources (like the way a choir sounds different to a single singer).
  * It does this by sampling from a delay line, so each voice is actually the same but at a slightly different point in time. This is a type of comb filtering.
@@ -176,39 +176,39 @@ AudioOutputI2S i2s1;
 //Sound generating connections
 AudioConnection          patchCord01(waveforms[0], 0, waveformMods[0], 1);
 AudioConnection          patchCord02(waveforms[1], 0, waveformMods[1], 1);
-AudioConnection          patchCord04(waveforms[2], 0, waveformMods[2], 1);
-AudioConnection          patchCord07(waveforms[3], 0, waveformMods[3], 1);
-AudioConnection          patchCord03(waveforms[4], 0, waveformMods[4], 1);
+AudioConnection          patchCord03(waveforms[2], 0, waveformMods[2], 1);
+AudioConnection          patchCord04(waveforms[3], 0, waveformMods[3], 1);
+AudioConnection          patchCord05(waveforms[4], 0, waveformMods[4], 1);
 
-AudioConnection          patchCord05(tonesweeps[0], 0, waveformMods[0], 0);
-AudioConnection          patchCord06(tonesweeps[1], 0, waveformMods[1], 0);
-AudioConnection          patchCord10(tonesweeps[2], 0, waveformMods[2], 0);
+AudioConnection          patchCord06(tonesweeps[0], 0, waveformMods[0], 0);
+AudioConnection          patchCord07(tonesweeps[1], 0, waveformMods[1], 0);
+AudioConnection          patchCord08(tonesweeps[2], 0, waveformMods[2], 0);
 AudioConnection          patchCord09(tonesweeps[3], 0, waveformMods[3], 0);
-AudioConnection          patchCord08(tonesweeps[4], 0, waveformMods[4], 0);
+AudioConnection          patchCord10(tonesweeps[4], 0, waveformMods[4], 0);
 
 AudioConnection          patchCord11(strings[0], 0, mixers[0], 1);
 AudioConnection          patchCord12(strings[1], 0, mixers[1], 1);
 AudioConnection          patchCord13(strings[2], 0, mixers[2], 1);
-AudioConnection          patchCord15(strings[3], 0, mixers[3], 1);
-AudioConnection          patchCord17(strings[4], 0, mixers[4], 1);
+AudioConnection          patchCord14(strings[3], 0, mixers[3], 1);
+AudioConnection          patchCord15(strings[4], 0, mixers[4], 1);
 
-AudioConnection          patchCord14(wavetables[0], 0, mixers[0], 0);
-AudioConnection          patchCord16(wavetables[1], 0, mixers[1], 0);
+AudioConnection          patchCord16(wavetables[0], 0, mixers[0], 0);
+AudioConnection          patchCord17(wavetables[1], 0, mixers[1], 0);
 AudioConnection          patchCord18(wavetables[2], 0, mixers[2], 0);
 AudioConnection          patchCord19(wavetables[3], 0, mixers[3], 0);
-AudioConnection          patchCord22(wavetables[4], 0, mixers[4], 0);
+AudioConnection          patchCord20(wavetables[4], 0, mixers[4], 0);
 
-AudioConnection          patchCord20(waveformMods[0], pwms[0]);
-AudioConnection          patchCord23(waveformMods[1], pwms[1]);
-AudioConnection          patchCord25(waveformMods[2], pwms[2]);
-AudioConnection          patchCord28(waveformMods[3], pwms[3]);
-AudioConnection          patchCord30(waveformMods[4], pwms[4]);
+AudioConnection          patchCord21(waveformMods[0], pwms[0]);
+AudioConnection          patchCord22(waveformMods[1], pwms[1]);
+AudioConnection          patchCord23(waveformMods[2], pwms[2]);
+AudioConnection          patchCord24(waveformMods[3], pwms[3]);
+AudioConnection          patchCord25(waveformMods[4], pwms[4]);
 
-AudioConnection          patchCord21(waveformMods[0], 0, mixers[0], 2);
-AudioConnection          patchCord24(waveformMods[1], 0, mixers[1], 2);
-AudioConnection          patchCord26(waveformMods[2], 0, mixers[2], 2);
-AudioConnection          patchCord27(waveformMods[3], 0, mixers[3], 2);
-AudioConnection          patchCord29(waveformMods[4], 0, mixers[4], 2);
+AudioConnection          patchCord26(waveformMods[0], 0, mixers[0], 2);
+AudioConnection          patchCord27(waveformMods[1], 0, mixers[1], 2);
+AudioConnection          patchCord28(waveformMods[2], 0, mixers[2], 2);
+AudioConnection          patchCord29(waveformMods[3], 0, mixers[3], 2);
+AudioConnection          patchCord30(waveformMods[4], 0, mixers[4], 2);
 
 AudioConnection          patchCord31(pwms[0], 0, mixers[0], 3);
 AudioConnection          patchCord32(pwms[1], 0, mixers[1], 3);
@@ -218,9 +218,9 @@ AudioConnection          patchCord35(pwms[4], 0, mixers[4], 3);
 
 AudioConnection          patchCord36(mixers[0], envelopes[0]);
 AudioConnection          patchCord37(mixers[1], envelopes[1]);
-AudioConnection          patchCord40(mixers[2], envelopes[2]);
+AudioConnection          patchCord38(mixers[2], envelopes[2]);
 AudioConnection          patchCord39(mixers[3], envelopes[3]);
-AudioConnection          patchCord38(mixers[4], envelopes[4]);
+AudioConnection          patchCord40(mixers[4], envelopes[4]);
 
 AudioConnection          patchCord41(envelopes[0], 0, finalMixers[0], 0);
 AudioConnection          patchCord42(envelopes[1], 0, finalMixers[0], 1);
@@ -231,11 +231,12 @@ AudioConnection          patchCord45(envelopes[4], 0, finalMixers[1], 1);
 //Final mixer connections
 AudioConnection          patchCord46(finalMixers[0], 0, finalMixers[1], 0);
 AudioConnection          patchCord47(finalMixers[1], amp1);
-AudioConnection          patchCord48(amp1, 0, multiply1, 0);
+//AudioConnection          patchCord48(amp1, 0, multiply1, 0);
+AudioConnection          patchCord48(amp1, 0, chorus1, 0);
+//AudioConnection          patchCord49(waveformMul, 0, multiply1, 1);
 
 //Effects conections
-AudioConnection          patchCord49(waveformMul, 0, multiply1, 1);
-AudioConnection          patchCord50(multiply1, chorus1);
+//AudioConnection          patchCord50(multiply1, chorus1);
 AudioConnection          patchCord51(chorus1, flange1);
 AudioConnection          patchCord52(flange1, reverb1);
 AudioConnection          patchCord53(reverb1, freeverbs1);

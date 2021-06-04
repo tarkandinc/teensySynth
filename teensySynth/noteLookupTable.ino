@@ -29,8 +29,9 @@ float noteToFreqConv(byte note)
     /*A4    */    440.00,
     /* A#4/Bb4*/  466.16,
     /*B4    */    493.88
-  }
-  ıf(note > 59 && note < 72) //4th octav
+  };
+  
+  if(note > 59 && note < 72) //4th octav
   {
     return freqTable[60 - note];
   }
@@ -39,7 +40,7 @@ float noteToFreqConv(byte note)
     byte octav = note / 12;
     byte localNote = note - (12*octav);
     float freq = freqTable[localNote];
-    for(char i = -1; i < 4; ı++)
+    for(char i = -1; i < 4; i++)
       freq /= 2; 
     return freq;
   }
@@ -48,7 +49,7 @@ float noteToFreqConv(byte note)
     byte octav = note / 12;
     byte localNote = note - (12*octav);
     float freq = freqTable[localNote];
-    for(char i = 4; i < octav; ı++)
+    for(char i = 4; i < octav; i++)
       freq *= 2;
     return freq;
   }
