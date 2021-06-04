@@ -47,14 +47,12 @@ AudioEffectEnvelope      envelope4;      //xy=1126.250015258789,1467.50002098083
 AudioEffectEnvelope      envelope5;      //xy=1133.7500190734863,1676.2500247955322
 AudioMixer4              mixer6;         //xy=1351.2500190734863,1063.7500190734863
 AudioMixer4              mixer7;         //xy=1473.7500190734863,1252.5000228881836
-AudioSynthWaveform       waveform6;      //xy=1644,1212
 AudioAmplifier           amp1;           //xy=1648.7500267028809,1100.0000162124634
-AudioEffectMultiply      multiply1;      //xy=1786.6786193847656,1145.8214302062988
-AudioEffectChorus        chorus1;        //xy=1928.6786193847656,1058.8214302062988
-AudioEffectFlange        flange1;        //xy=1965.6786193847656,1120.8214302062988
-AudioEffectReverb        reverb1;        //xy=2008.6786193847656,1184.8214302062988
-AudioEffectFreeverbStereo freeverbs1;     //xy=2071.6786193847656,1247.8214302062988
-AudioOutputI2S           i2s1;           //xy=2242.6786193847656,1247.8214302062988
+AudioEffectChorus        chorus1;        //xy=1803.6786346435547,1100.4880867004395
+AudioEffectFlange        flange1;        //xy=1840.6786346435547,1162.4880867004395
+AudioEffectReverb        reverb1;        //xy=1883.6786346435547,1226.4880867004395
+AudioEffectFreeverbStereo freeverbs1;     //xy=1946.6786346435547,1289.4880867004395
+AudioOutputI2S           i2s1;           //xy=2117.6786346435547,1289.4880867004395
 AudioConnection          patchCord1(waveform1, 0, waveformMod1, 1);
 AudioConnection          patchCord2(waveform2, 0, waveformMod2, 1);
 AudioConnection          patchCord3(waveform5, 0, waveformMod5, 1);
@@ -102,12 +100,10 @@ AudioConnection          patchCord44(envelope4, 0, mixer6, 3);
 AudioConnection          patchCord45(envelope5, 0, mixer7, 1);
 AudioConnection          patchCord46(mixer6, 0, mixer7, 0);
 AudioConnection          patchCord47(mixer7, amp1);
-AudioConnection          patchCord48(waveform6, 0, multiply1, 1);
-AudioConnection          patchCord49(amp1, 0, multiply1, 0);
-AudioConnection          patchCord50(multiply1, chorus1);
-AudioConnection          patchCord51(chorus1, flange1);
-AudioConnection          patchCord52(flange1, reverb1);
-AudioConnection          patchCord53(reverb1, freeverbs1);
-AudioConnection          patchCord54(freeverbs1, 0, i2s1, 0);
-AudioConnection          patchCord55(freeverbs1, 1, i2s1, 1);
+AudioConnection          patchCord48(amp1, chorus1);
+AudioConnection          patchCord49(chorus1, flange1);
+AudioConnection          patchCord50(flange1, reverb1);
+AudioConnection          patchCord51(reverb1, freeverbs1);
+AudioConnection          patchCord52(freeverbs1, 0, i2s1, 0);
+AudioConnection          patchCord53(freeverbs1, 1, i2s1, 1);
 // GUItool: end automatically generated code
