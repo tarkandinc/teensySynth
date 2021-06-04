@@ -1,6 +1,8 @@
 #ifndef AUDIO_DESIGN_H
 #define AUDIO_DESIGN_H
 
+#include <Audio.h>
+
 extern AudioSynthWavetable wavetables[5];
 extern AudioSynthKarplusStrong strings[5];
 extern AudioSynthToneSweep tonesweeps[5];

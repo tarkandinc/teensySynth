@@ -1,5 +1,6 @@
 #include "teensySynth.h"
 #include "midiHandlers.h"
+#include "audioFunctions.h"
 #include <USBHost_t36.h>
 
 USBHost teensyUsbHost;
@@ -43,6 +44,8 @@ void setup()
     // This generic System Real Time handler is only used if the
     // more specific ones are not set.
     teensyMidi.setHandleRealTimeSystem(teensyMidiRealTimeSystem);
+
+    initAudioFunctions();
 }
 
 void loop()
