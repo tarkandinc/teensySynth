@@ -8,5 +8,7 @@ void loadSoundFont(byte fileNo)
       soundFont = root.openNextFile();
 
     //read soundFont data
-    
+
+    soundFont.close();
+    root.close();
 }
