@@ -3,8 +3,8 @@
 #define CHORUS_BLOCK_SAMPLE 1024
 #define FLANGE_BLOCK_SAMPLE 1024
 
-unsigned short chorusBuffer[CHORUS_BLOCK_SAMPLE];
-unsigned short flangeBuffer[FLANGE_BLOCK_SAMPLE];
+short chorusBuffer[CHORUS_BLOCK_SAMPLE];
+short flangeBuffer[FLANGE_BLOCK_SAMPLE];
 
 static void setupMixers(void)
 {
