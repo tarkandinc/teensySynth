@@ -2,9 +2,11 @@
 #include "midiHandlers.h"
 #include "audioFunctions.h"
 #include <USBHost_t36.h>
+#include <SD.h>
 
 USBHost teensyUsbHost;
 MIDIDevice teensyMidi(teensyUsbHost);
+File root;
 
 void setup()
 {
@@ -20,6 +22,8 @@ void setup()
     Serial.println("USB MIDI Messages");
     delay(10);
 #endif
+    SD.begin();
+    
     teensyMidi.setHandleNoteOn(teensyMidiNoteOn);
     teensyMidi.setHandleNoteOff(teensyMidiNoteOff);
     teensyMidi.setHandleAfterTouchPoly(teensyMidiAfterTouchPoly);
@@ -46,6 +50,7 @@ void setup()
     teensyMidi.setHandleRealTimeSystem(teensyMidiRealTimeSystem);
 
     initAudioFunctions();
+    loadSoundFont(0);
 }
 
 void loop()
