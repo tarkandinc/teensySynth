@@ -1,6 +1,7 @@
 #include <SD.h>
 #include <Audio.h>
 #include "soundFonts.h"
+#include "audioDesign.h"
 
 //Sound File will be formated as
 //First soundFont data as sample_data struct
@@ -8,8 +9,8 @@
 //Third sampleRange in 
 //Last sample data, size given in sampleCount
 
-sample_data soundFont;
-instrument_data instrument;
+struct sample_data soundFont;
+struct instrument_data instrument;
 uint8_t sampleRange;
 int16_t sampleCount;
 int16_t soundSample[MAX_SAMPLE_COUNT];
@@ -32,6 +33,8 @@ void loadSoundFont(byte fileNo)
     instrument.sample_count = 1;
     instrument.sample_note_ranges = &sampleRange;
     instrument.samples = &soundFont;
+    for(int i=0; i<5; i++)
+      wavetables[i].setInstrument((const AudioSynthWavetable::instrument_data&)instrument);
     sampleFile.close();
     rootDir.close();
 }
