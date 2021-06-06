@@ -1,6 +1,7 @@
 #include "teensySynth.h"
 #include "midiHandlers.h"
 #include "audioFunctions.h"
+#include "soundFonts.h"
 #include <USBHost_t36.h>
 #include <SD.h>
 
