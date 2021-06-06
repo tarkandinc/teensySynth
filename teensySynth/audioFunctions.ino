@@ -28,5 +28,5 @@ void initAudioFunctions(void)
   flange1.begin(flangeBuffer, FLANGE_BLOCK_SAMPLE, 0, 0, 0);
   reverb1.reverbTime(0);
   freeverbs1.roomsize(0);
-  freeverbs1.damping(0);    
+  freeverbs1.damping(0);
 }
