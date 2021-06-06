@@ -28,13 +28,15 @@ void loadSoundFont(byte fileNo)
     sampleFile.read(&sampleCount, sizeof(int16_t));
     sampleFile.read(&sampleRange, sizeof(uint8_t));
     if(sampleCount < MAX_SAMPLE_COUNT)
+    {
       sampleFile.read(soundSample, sampleCount * sizeof(int16_t));
-    soundFont.sample = soundSample;
-    instrument.sample_count = 1;
-    instrument.sample_note_ranges = &sampleRange;
-    instrument.samples = &soundFont;
-    for(int i=0; i<5; i++)
-      wavetables[i].setInstrument((const AudioSynthWavetable::instrument_data&)instrument);
+      soundFont.sample = soundSample;
+      instrument.sample_count = 1;
+      instrument.sample_note_ranges = &sampleRange;
+      instrument.samples = &soundFont;
+      for(int i=0; i<5; i++)
+        wavetables[i].setInstrument((const AudioSynthWavetable::instrument_data&)instrument);
+    }
     sampleFile.close();
     rootDir.close();
 }
