@@ -38,7 +38,7 @@ void loadSoundFont(byte fileNo)
         wavetables[i].setInstrument((const AudioSynthWavetable::instrument_data&)instrument);
 #ifdef PRINT_MIDI_MESSAGES
       Serial.print(sampleFile.name());
-      Serial.println(" loadedN");
+      Serial.println(" loaded");
 #endif
     }
     sampleFile.close();
