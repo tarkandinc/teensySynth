@@ -168,10 +168,18 @@ AudioEffectReverb reverb1;
  */
 AudioEffectFreeverbStereo freeverbs1;
 
+#ifdef I2C_PT8211
+/* AudioOutputPT8211: Transmit 16 bit stereo audio to a low-cost PT8211 DAC chip. 4X oversampling and filtering are automatically used to improve output quality.
+ * This object has no functions to call from the Arduino sketch. It simply streams data from its 2 input ports to a PT8211 chip.
+ * 4X oversampling and filtering is automatically used to improve quality. 
+ */
+AudioOutputPT8211 i2s1;
+#else
 /* AudioOutputI2S: Transmit 16 bit stereo audio to the audio shield or another I2S device, using I2S master mode.
  * This object has no functions to call from the Arduino sketch. It simply streams data from its 2 input ports to the I2S hardware.
  */
 AudioOutputI2S i2s1;
+#endif
 
 //Sound generating connections
 AudioConnection          patchCord01(waveforms[0], 0, waveformMods[0], 1);
