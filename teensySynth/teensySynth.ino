@@ -6,8 +6,13 @@
 #include <SD.h>
 
 USBHost teensyUsbHost;
+USBHub hub1(teensyUsbHost);
+USBHub hub2(teensyUsbHost);
 MIDIDevice teensyMidi(teensyUsbHost);
 File root;
+
+#include "teensySynth.h"
+#include "audioDesign.h"
 
 void setup()
 {
@@ -23,6 +28,7 @@ void setup()
     Serial.println("USB MIDI Messages");
     delay(10);
 #endif
+    teensyUsbHost.begin();
     SD.begin();
     
     teensyMidi.setHandleNoteOn(teensyMidiNoteOn);
@@ -50,8 +56,8 @@ void setup()
     // more specific ones are not set.
     teensyMidi.setHandleRealTimeSystem(teensyMidiRealTimeSystem);
 
-    initAudioFunctions();
-    loadSoundFont(0);
+    //initAudioFunctions();
+    //loadSoundFont(0);
 }
 
 void loop()
@@ -61,5 +67,7 @@ void loop()
     // regularly from loop() for midi1 to actually read incoming
     // data and run the handler functions as messages arrive.
     teensyUsbHost.Task();
-    teensyMidi.read();  
+    teensyMidi.read();
+    //delay(1500);
+    //Serial.println("MIDI loop"); 
 }
