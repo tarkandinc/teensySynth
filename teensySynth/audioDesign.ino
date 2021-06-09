@@ -181,72 +181,59 @@ AudioOutputPT8211 i2s1;
 AudioOutputI2S i2s1;
 #endif
 
-//Sound generating connections
-AudioConnection          patchCord01(waveforms[0], 0, waveformMods[0], 1);
-AudioConnection          patchCord02(waveforms[1], 0, waveformMods[1], 1);
-AudioConnection          patchCord03(waveforms[2], 0, waveformMods[2], 1);
-AudioConnection          patchCord04(waveforms[3], 0, waveformMods[3], 1);
-AudioConnection          patchCord05(waveforms[4], 0, waveformMods[4], 1);
-
-AudioConnection          patchCord06(tonesweeps[0], 0, waveformMods[0], 0);
-AudioConnection          patchCord07(tonesweeps[1], 0, waveformMods[1], 0);
-AudioConnection          patchCord08(tonesweeps[2], 0, waveformMods[2], 0);
-AudioConnection          patchCord09(tonesweeps[3], 0, waveformMods[3], 0);
-AudioConnection          patchCord10(tonesweeps[4], 0, waveformMods[4], 0);
-
-AudioConnection          patchCord11(wavetables[0], 0, mixers[0], 0);
-AudioConnection          patchCord12(wavetables[1], 0, mixers[1], 0);
-AudioConnection          patchCord13(wavetables[2], 0, mixers[2], 0);
-AudioConnection          patchCord14(wavetables[3], 0, mixers[3], 0);
-AudioConnection          patchCord15(wavetables[4], 0, mixers[4], 0);
-
-AudioConnection          patchCord16(strings[0], 0, mixers[0], 1);
-AudioConnection          patchCord17(strings[1], 0, mixers[1], 1);
-AudioConnection          patchCord18(strings[2], 0, mixers[2], 1);
-AudioConnection          patchCord19(strings[3], 0, mixers[3], 1);
-AudioConnection          patchCord20(strings[4], 0, mixers[4], 1);
-
-AudioConnection          patchCord21(waveformMods[0], pwms[0]);
-AudioConnection          patchCord22(waveformMods[1], pwms[1]);
-AudioConnection          patchCord23(waveformMods[2], pwms[2]);
-AudioConnection          patchCord24(waveformMods[3], pwms[3]);
-AudioConnection          patchCord25(waveformMods[4], pwms[4]);
-
-AudioConnection          patchCord26(waveformMods[0], 0, mixers[0], 2);
-AudioConnection          patchCord27(waveformMods[1], 0, mixers[1], 2);
-AudioConnection          patchCord28(waveformMods[2], 0, mixers[2], 2);
-AudioConnection          patchCord29(waveformMods[3], 0, mixers[3], 2);
-AudioConnection          patchCord30(waveformMods[4], 0, mixers[4], 2);
-
-AudioConnection          patchCord31(pwms[0], 0, mixers[0], 3);
-AudioConnection          patchCord32(pwms[1], 0, mixers[1], 3);
-AudioConnection          patchCord33(pwms[2], 0, mixers[2], 3);
-AudioConnection          patchCord34(pwms[3], 0, mixers[3], 3);
-AudioConnection          patchCord35(pwms[4], 0, mixers[4], 3);
-
-AudioConnection          patchCord36(mixers[0], envelopes[0]);
-AudioConnection          patchCord37(mixers[1], envelopes[1]);
-AudioConnection          patchCord38(mixers[2], envelopes[2]);
-AudioConnection          patchCord39(mixers[3], envelopes[3]);
-AudioConnection          patchCord40(mixers[4], envelopes[4]);
-
-AudioConnection          patchCord41(envelopes[0], 0, finalMixers[0], 0);
-AudioConnection          patchCord42(envelopes[1], 0, finalMixers[0], 1);
-AudioConnection          patchCord43(envelopes[2], 0, finalMixers[0], 2);
-AudioConnection          patchCord44(envelopes[3], 0, finalMixers[0], 3);
-AudioConnection          patchCord45(envelopes[4], 0, finalMixers[1], 1);
-
-//Final mixer connections
-AudioConnection          patchCord46(finalMixers[0], 0, finalMixers[1], 0);
-AudioConnection          patchCord47(finalMixers[1], amp1);
-AudioConnection          patchCord48(amp1, 0, chorus1, 0);
-
-//Effects conections
-AudioConnection          patchCord49(chorus1, flange1);
-AudioConnection          patchCord50(flange1, reverb1);
-AudioConnection          patchCord51(reverb1, freeverbs1);
-
-//Output connections
-AudioConnection          patchCord52(freeverbs1, 0, i2s1, 0);
-AudioConnection          patchCord53(freeverbs1, 1, i2s1, 1);
-// GUItool: end automatically generated code
+AudioConnection patchCords[] = {    {waveforms[0], 0, waveformMods[0], 1},
+                                    {waveforms[1], 0, waveformMods[1], 1},
+                                    {waveforms[2], 0, waveformMods[2], 1},
+                                    {waveforms[3], 0, waveformMods[3], 1},
+                                    {waveforms[4], 0, waveformMods[4], 1},
+                                    {tonesweeps[0], 0, waveformMods[0], 0},
+                                    {tonesweeps[1], 0, waveformMods[1], 0},
+                                    {tonesweeps[2], 0, waveformMods[2], 0},
+                                    {tonesweeps[3], 0, waveformMods[3], 0},
+                                    {tonesweeps[4], 0, waveformMods[4], 0},
+                                    {wavetables[0], 0, mixers[0], 0},
+                                    {wavetables[1], 0, mixers[1], 0},
+                                    {wavetables[2], 0, mixers[2], 0},
+                                    {wavetables[3], 0, mixers[3], 0},
+                                    {wavetables[4], 0, mixers[4], 0},
+                                    {strings[0], 0, mixers[0], 1},
+                                    {strings[1], 0, mixers[1], 1},
+                                    {strings[2], 0, mixers[2], 1},
+                                    {strings[3], 0, mixers[3], 1},
+                                    {strings[4], 0, mixers[4], 1},
+                                    {waveformMods[0], pwms[0]},
+                                    {waveformMods[1], pwms[1]},
+                                    {waveformMods[2], pwms[2]},
+                                    {waveformMods[3], pwms[3]},
+                                    {waveformMods[4], pwms[4]},
+                                    {waveformMods[0], 0, mixers[0], 2},
+                                    {waveformMods[1], 0, mixers[1], 2},
+                                    {waveformMods[2], 0, mixers[2], 2},
+                                    {waveformMods[3], 0, mixers[3], 2},
+                                    {waveformMods[4], 0, mixers[4], 2},
+                                    {pwms[0], 0, mixers[0], 3},
+                                    {pwms[1], 0, mixers[1], 3},
+                                    {pwms[2], 0, mixers[2], 3},
+                                    {pwms[3], 0, mixers[3], 3},
+                                    {pwms[4], 0, mixers[4], 3},
+                                    {mixers[0], envelopes[0]},
+                                    {mixers[1], envelopes[1]},
+                                    {mixers[2], envelopes[2]},
+                                    {mixers[3], envelopes[3]},
+                                    {mixers[4], envelopes[4]},
+                                    {envelopes[0], 0, finalMixers[0], 0},
+                                    {envelopes[1], 0, finalMixers[0], 1},
+                                    {envelopes[2], 0, finalMixers[0], 2},
+                                    {envelopes[3], 0, finalMixers[0], 3},
+                                    {envelopes[4], 0, finalMixers[1], 1},
+                                    //Final mixer connections
+                                    {finalMixers[0], 0, finalMixers[1], 0},
+                                    {finalMixers[1], amp1},
+                                    {amp1, 0, chorus1, 0},
+                                    //Effects conections
+                                    {chorus1, flange1},
+                                    {flange1, reverb1},
+                                    {reverb1, freeverbs1},
+                                    //Output connections
+                                    {freeverbs1, 0, i2s1, 0}, 
+                                    {freeverbs1, 1, i2s1, 1}                };
