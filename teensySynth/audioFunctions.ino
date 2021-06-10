@@ -17,13 +17,16 @@ static void setupMixers(void)
   for(int i=0; i<5; i++)
     for(int j=0; j<4; j++)
       mixers[i].gain(j, 0);
+  //default wavetables only
+  for(int i=0; i<5; i++)
+    mixers[i].gain(0, 1);
 }
 
 void initAudioFunctions(void)
 {
   setupMixers();
   amp1.gain(1);
-  //envelopes left atdefault default values
+  //envelopes left at default default values
   chorus1.begin(chorusBuffer, CHORUS_BLOCK_SAMPLE,1);
   flange1.begin(flangeBuffer, FLANGE_BLOCK_SAMPLE, 0, 0, 0);
   reverb1.reverbTime(0);
