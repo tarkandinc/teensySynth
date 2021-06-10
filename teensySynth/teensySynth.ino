@@ -56,7 +56,7 @@ void setup()
     // more specific ones are not set.
     teensyMidi.setHandleRealTimeSystem(teensyMidiRealTimeSystem);
 
-    //initAudioFunctions();
+    initAudioFunctions();
     //loadSoundFont(0);
 }
 
@@ -68,6 +68,4 @@ void loop()
     // data and run the handler functions as messages arrive.
     teensyUsbHost.Task();
     teensyMidi.read();
-    //delay(1500);
-    //Serial.println("MIDI loop"); 
 }
