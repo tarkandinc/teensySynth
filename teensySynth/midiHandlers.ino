@@ -27,20 +27,6 @@ void teensyMidiNoteOff(byte channel, byte note, byte velocity)
     Serial.print(", velocity=");
     Serial.println(velocity, DEC);
 #endif
-
-}
-
-void teensyMidiAfterTouchPoly(byte channel, byte note, byte velocity)
-{  
-#ifdef PRINT_MIDI_MESSAGES
-    Serial.print("AfterTouch Change, ch=");
-    Serial.print(channel, DEC);
-    Serial.print(", note=");
-    Serial.print(note, DEC);
-    Serial.print(", velocity=");
-    Serial.println(velocity, DEC);
-#endif
-
 }
 
 void teensyMidiControlChange(byte channel, byte control, byte value)
@@ -65,6 +51,16 @@ void teensyMidiProgramChange(byte channel, byte program)
 #endif
 }
 
+void teensyMidiPitchChange(byte channel, int pitch)
+{
+#ifdef PRINT_MIDI_MESSAGES
+    Serial.print("Pitch Change, ch=");
+    Serial.print(channel, DEC);
+    Serial.print(", pitch=");
+    Serial.println(pitch, DEC);
+#endif
+}
+
 void teensyMidiAfterTouchChannel(byte channel, byte pressure)
 {
 #ifdef PRINT_MIDI_MESSAGES
@@ -75,14 +71,17 @@ void teensyMidiAfterTouchChannel(byte channel, byte pressure)
 #endif
 }
 
-void teensyMidiPitchChange(byte channel, int pitch)
-{
+void teensyMidiAfterTouchPoly(byte channel, byte note, byte velocity)
+{  
 #ifdef PRINT_MIDI_MESSAGES
-    Serial.print("Pitch Change, ch=");
+    Serial.print("AfterTouch Change, ch=");
     Serial.print(channel, DEC);
-    Serial.print(", pitch=");
-    Serial.println(pitch, DEC);
+    Serial.print(", note=");
+    Serial.print(note, DEC);
+    Serial.print(", velocity=");
+    Serial.println(velocity, DEC);
 #endif
+  //not used
 }
 
 void teensyMidiSystemExclusiveChunk(const byte *data, uint16_t length, bool last)
@@ -95,6 +94,7 @@ void teensyMidiSystemExclusiveChunk(const byte *data, uint16_t length, bool last
     Serial.print(", last=");
     Serial.println(last, DEC);
 #endif
+  //not used
 }
 
 void teensyMidiSystemExclusive(byte *data, unsigned int length)
@@ -105,6 +105,7 @@ void teensyMidiSystemExclusive(byte *data, unsigned int length)
     Serial.print(", length=");
     Serial.println(length, DEC);
 #endif
+  //not used
 }
 
 void teensyMidiTimeCodeQuarterFrame(byte data)
@@ -113,6 +114,7 @@ void teensyMidiTimeCodeQuarterFrame(byte data)
     Serial.print("Time Code, data=");
     Serial.println(data, DEC);
 #endif
+  //not used
 }
 
 void teensyMidiSongPosition(uint16_t beats)
@@ -121,6 +123,7 @@ void teensyMidiSongPosition(uint16_t beats)
     Serial.print("Song position, beats=");
     Serial.println(beats, DEC);
 #endif
+  //not used
 }
 
 void teensyMidiSongSelect(byte songNumber)
@@ -129,6 +132,7 @@ void teensyMidiSongSelect(byte songNumber)
     Serial.print("Song select, number=");
     Serial.println(songNumber, DEC);
 #endif
+  //not used
 }
 
 void teensyMidiTuneRequest()
@@ -136,6 +140,7 @@ void teensyMidiTuneRequest()
 #ifdef PRINT_MIDI_MESSAGES
     Serial.println("Tune request");
 #endif
+  //not used
 }
 
 void teensyMidiClock()
@@ -143,6 +148,7 @@ void teensyMidiClock()
 #ifdef PRINT_MIDI_MESSAGES
     Serial.println("Midi clock");
 #endif
+  //not used
 }
 
 void teensyMidiStart()
@@ -150,6 +156,7 @@ void teensyMidiStart()
 #ifdef PRINT_MIDI_MESSAGES
     Serial.println("Midi start");
 #endif
+  //not used
 }
 
 void teensyMidiContinue()
@@ -157,6 +164,7 @@ void teensyMidiContinue()
 #ifdef PRINT_MIDI_MESSAGES
     Serial.println("Midi continue");
 #endif
+  //not used
 }
 
 void teensyMidiStop()
@@ -164,6 +172,7 @@ void teensyMidiStop()
 #ifdef PRINT_MIDI_MESSAGES
     Serial.println("Midi stop");
 #endif
+  //not used
 }
 
 void teensyMidiActiveSensing()
@@ -171,6 +180,7 @@ void teensyMidiActiveSensing()
 #ifdef PRINT_MIDI_MESSAGES
     Serial.println("Midi activate sensing");
 #endif
+  //not used
 }
 
 void teensyMidiSystemReset()
@@ -178,6 +188,7 @@ void teensyMidiSystemReset()
 #ifdef PRINT_MIDI_MESSAGES
     Serial.println("Midi reset");
 #endif
+  //not used
 }
 
 void teensyMidiRealTimeSystem(byte realtimebyte)
@@ -186,4 +197,5 @@ void teensyMidiRealTimeSystem(byte realtimebyte)
     Serial.print("Real time, time=");
     Serial.println(realtimebyte, DEC);
 #endif
+  //not used
 }
