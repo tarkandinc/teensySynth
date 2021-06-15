@@ -57,7 +57,8 @@ void setup()
     teensyMidi.setHandleRealTimeSystem(teensyMidiRealTimeSystem);
 
     initAudioFunctions();
-    //loadSoundFont(0);
+    loadSoundFont(0,0);
+    //loadSoundFont(1,1);
 }
 
 void loop()
