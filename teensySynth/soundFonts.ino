@@ -13,15 +13,17 @@
 //sampleRange in uint8_t
 //sample data in sampleCount * int16_t
 
-struct sample_data soundFont;
-struct instrument_data instrument;
-uint8_t sampleRange;
-int16_t sampleCount;
-int16_t soundSample[MAX_SAMPLE_COUNT];
+struct sample_data soundFont[INSTRUMENT_COUNT];
+struct instrument_data instrument[INSTRUMENT_COUNT];
+uint8_t sampleRange[INSTRUMENT_COUNT];
+int16_t sampleCount[INSTRUMENT_COUNT];
+int16_t soundSample[INSTRUMENT_COUNT][MAX_SAMPLE_COUNT];
 
-void loadSoundFont(byte fileNo)
+void loadSoundFont(byte fileNo, byte sampleNo)
 {
-    byte signature[4];
+    char signature[4];
+    byte nameLength;
+    char name[32];
     
     //navigate to file
     File rootDir = SD.open("/");
@@ -33,18 +35,20 @@ void loadSoundFont(byte fileNo)
     sampleFile.read(signature, sizeof("TSSF"));
     if(strcmp(signature,"TSSF") == 0)
     {
+      sampleFile.read(&nameLength, sizeof(byte));
+      sampleFile.read(name, sizeof(char) * nameLength);
       sampleFile.read(&soundFont, sizeof(sample_data));
       sampleFile.read(&sampleCount, sizeof(int16_t));
       sampleFile.read(&sampleRange, sizeof(uint8_t));
-      if(sampleCount < MAX_SAMPLE_COUNT)
+      if(sampleCount[sampleNo] < MAX_SAMPLE_COUNT)
       {
-        sampleFile.read(soundSample, sampleCount * sizeof(int16_t));
-        soundFont.sample = soundSample;
-        instrument.sample_count = 1;
-        instrument.sample_note_ranges = &sampleRange;
-        instrument.samples = &soundFont;
+        sampleFile.read(soundSample[sampleNo], sampleCount[sampleNo] * sizeof(int16_t));
+        soundFont[sampleNo].sample = soundSample[sampleNo];
+        instrument[sampleNo].sample_count = 1;
+        instrument[sampleNo].sample_note_ranges = &(sampleRange[sampleNo]);
+        instrument[sampleNo].samples = &(soundFont[sampleNo]);
         for(int i=0; i<5; i++)
-          wavetables[i].setInstrument((const AudioSynthWavetable::instrument_data&)instrument);
+          wavetables[i].setInstrument((const AudioSynthWavetable::instrument_data&)(instrument[sampleNo]));
   #ifdef PRINT_MIDI_MESSAGES
         Serial.print(sampleFile.name());
         Serial.println(" loaded");
