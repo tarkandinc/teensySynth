@@ -3,6 +3,10 @@
 
 #define MAX_SAMPLE_COUNT 65536
 
+#ifdef TEENSY_3_6
+#define INSTRUMENT_COUNT 1
+#endif
+
 struct sample_data
 {
   // SAMPLE VALUES
@@ -45,6 +49,6 @@ struct instrument_data
   sample_data* samples;
 };
 
-void loadSoundFont(byte fileNo);
+void loadSoundFont(byte fileNo, byte sampleNo);
 
 #endif
