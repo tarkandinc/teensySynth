@@ -1,7 +1,7 @@
 #ifndef SOUND_FONTS_H
 #define SOUND_FONTS_H
 
-#define MAX_SAMPLE_COUNT 65536
+#define MAX_SAMPLE_COUNT 65536/2
 
 #ifdef TEENSY_3_6
 #define INSTRUMENT_COUNT 1
