@@ -9,7 +9,6 @@ USBHost teensyUsbHost;
 USBHub hub1(teensyUsbHost);
 USBHub hub2(teensyUsbHost);
 MIDIDevice teensyMidi(teensyUsbHost);
-File root;
 
 #include "teensySynth.h"
 #include "audioDesign.h"
@@ -29,7 +28,7 @@ void setup()
     delay(10);
 #endif
     teensyUsbHost.begin();
-    SD.begin();
+    SD.begin(BUILTIN_SDCARD);
     
     teensyMidi.setHandleNoteOn(teensyMidiNoteOn);
     teensyMidi.setHandleNoteOff(teensyMidiNoteOff);
