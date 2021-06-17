@@ -12,6 +12,7 @@
 //sampleCount in int16_t
 //sampleRange in uint8_t
 //sample data in sampleCount * int16_t
+//file ens signature "TSSFEND"
 
 struct sample_data soundFont[INSTRUMENT_COUNT];
 struct instrument_data instrument[INSTRUMENT_COUNT];
@@ -22,7 +23,9 @@ int16_t soundSample[INSTRUMENT_COUNT][MAX_SAMPLE_COUNT];
 void loadSoundFont(byte fileNo, byte sampleNo)
 {
     char signature[5];
+    char endSignature[8];
     signature[4] = 0;
+    endSignature[7] = 0;
     byte nameLength;
     char name[32];
     
@@ -38,7 +41,7 @@ void loadSoundFont(byte fileNo, byte sampleNo)
       sampleFile.read(&nameLength, sizeof(byte));
       sampleFile.read(name, sizeof(char) * nameLength);
       sampleFile.read(&soundFont, sizeof(sample_data));
-      sampleFile.read(&sampleCount, sizeof(int16_t));
+      sampleFile.read(&sampleCount, sizeof(int16_t));//count of 
       sampleFile.read(&sampleRange, sizeof(uint8_t));
       if(sampleCount[sampleNo] < MAX_SAMPLE_COUNT)
       {
@@ -49,10 +52,14 @@ void loadSoundFont(byte fileNo, byte sampleNo)
         instrument[sampleNo].samples = &(soundFont[sampleNo]);
         for(int i=0; i<5; i++)
           wavetables[i].setInstrument((const AudioSynthWavetable::instrument_data&)(instrument[sampleNo]));
+        sampleFile.read(endSignature, sizeof("TSSFEND"));
+        if(strncmp(endSignature,"TSSFEND", 7) == 0)
+        {
   #ifdef PRINT_MIDI_MESSAGES
-        Serial.print(sampleFile.name());
-        Serial.println(" loaded");
+          Serial.print(sampleFile.name());
+          Serial.println(" loaded");
   #endif
+        }
       }
     }
     sampleFile.close();
