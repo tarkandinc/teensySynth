@@ -1,6 +1,7 @@
 #include <SD.h>
 #include <stdint.h>
 #include <WProgram.h>
+#include "soundSample.h"
 #include "soundFont.h"
 #include "samples.h"
 
