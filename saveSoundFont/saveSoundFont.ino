@@ -12,8 +12,9 @@
 //sampleCount in int16_t
 //sampleRange in uint8_t
 //sample data in sampleCount * int16_t
+//file ens signature "TSSFEND"
 
-char fileName[] = "ASAXC";
+char fileName[] = FILE_NAME;
 byte nameLength = sizeof(fileName);
 
 void setup()
@@ -21,24 +22,27 @@ void setup()
   Serial.begin(115200);
   if(!SD.begin(BUILTIN_SDCARD))
     Serial.println("error sd");
-  File sampleFile = SD.open("asaxc.tsf", FILE_WRITE);
+  File sampleFile = SD.open(FILE_NAME, FILE_WRITE);
   if(sampleFile == false)
     Serial.println("error file");
   sampleFile.write("TSSF", sizeof("TSSF"));
   sampleFile.write(nameLength);
   sampleFile.write(fileName, nameLength);
   sampleFile.write((char*)&sample, sizeof(struct sample_data));
-  sampleFile.write(sampleCount*2);
-  sampleFile.write((char*)&soundSample[0], sizeof(int16_t)*sampleCount*2);
+  sampleFile.write(sampleCount);
+  sampleFile.write((char*)&soundSample[0], sizeof(int32_t)*sampleCount);
+  sampleFile.write("TSSFEND", sizeof("TSSFEND"));
   sampleFile.close();
-  Serial.println("done");
-  sampleFile = SD.open("asaxc.tsf", FILE_READ);
-    if(sampleFile == false)
-    Serial.println("error file");
-  Serial.println(sampleFile.name());
-  sampleFile.close();
-  
 
+  sampleFile = SD.open(FILE_NAME, FILE_READ);
+  if(sampleFile)
+  {
+    Serial.println("done");
+    Serial.println(sampleFile.name());
+  }
+  else
+    Serial.println("error file");
+  sampleFile.close();
 }
 
 void loop() {
