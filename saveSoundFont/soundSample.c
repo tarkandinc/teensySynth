@@ -1,12 +1,13 @@
 //#include <AudioStream.h>
 #include "samples.h"
 #include "soundFont.h"
+#include "soundSample.h"
 #include <stdint.h>
 #include <WProgram.h>
 
-uint8_t range = 127;
+uint8_t range = RANGE;
 
-int16_t sampleCount = 640;
+int16_t sampleCount = SAMPLE_COUNT;
 
 struct instrument_data instrument = {1, &range, &sample };
 
@@ -37,7 +38,7 @@ struct sample_data sample = {
     (int32_t)(UINT16_MAX * (1.0 - DECIBEL_SHIFT(0))) * 4, // MODULATION_AMPLITUDE_FINAL_GAIN
 };
 
-uint32_t soundSample[640] = {
+uint32_t soundSample[SAMPLE_COUNT] = {
 0x00000000,0xfd01fe72,0xfe91fdb3,0x0078ff95,0x0151012b,0x023501b6,0x03360299,0x03cd041a,
 0x03a10321,0x039703e5,0x03ab03f1,0x042e03ab,0x040c041a,0x032a03a9,0x02e802b8,0x015201c6,
 0xff8e003b,0xfc99fe09,0xfa8ffbe4,0xf90ff979,0xf8eff93f,0xf7a0f846,0xf9f3f884,0xfb8ffade,
