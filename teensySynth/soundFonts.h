@@ -1,7 +1,7 @@
 #ifndef SOUND_FONTS_H
 #define SOUND_FONTS_H
 
-#define MAX_SAMPLE_COUNT 65536/2
+#define MAX_SAMPLE_COUNT (65536/2)
 //max sample size must be 16384 in uint32
 
 #ifdef TEENSY_3_6

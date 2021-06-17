@@ -4,8 +4,6 @@
 #include <stdint.h>
 #include <WProgram.h>
 
-#define MAX_SAMPLE_COUNT 65536/2
-
 #define AUDIO_BLOCK_SAMPLES 128
 #define AUDIO_SAMPLE_RATE_EXACT 44117.64706
 
