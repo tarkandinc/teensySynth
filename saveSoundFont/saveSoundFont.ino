@@ -10,10 +10,21 @@
 //sample data in sampleCount * int16_t
 //file ens signature "TSSFEND"
 
+//ENABLE ONLY ONE SOUND SAMPLE AT A TIME
 //#include "asaxc.h"
 //#include "effectk.h"
-#include "harmonica.h"
+//#include "harmonica.h"
 //#include "harpsicord.h"
+//#include "htrumpetax.h"
+//#include "nguitb.h"
+//#include "organwave.h"
+//#include "piano.h"
+//#include "pianocx.h"
+//#include "sawstackwavems.h"
+//#include "slapbassc.h"
+//#include "stringdx.h"
+//#include "stringsg.h"
+#include "synthstring.h"
 
 struct count_range countAndRange = {SAMPLE_COUNT, RANGE};
 
