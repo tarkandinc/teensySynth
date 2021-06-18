@@ -6,6 +6,7 @@
 //#define TEENSY_4_1
 
 #define PRINT_MIDI_MESSAGES
+#define PRINT_FILE_MESSAGES
 
 #define I2C_PT8211
 
