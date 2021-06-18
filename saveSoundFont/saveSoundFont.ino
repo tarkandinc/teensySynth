@@ -1,9 +1,7 @@
 #include <SD.h>
 #include <stdint.h>
 #include <WProgram.h>
-#include "soundSample.h"
 #include "soundFont.h"
-#include "samples.h"
 
 //Sound File will be formated as
 //soundFont data as sample_data struct
@@ -11,6 +9,11 @@
 //sampleRange in uint8_t
 //sample data in sampleCount * int16_t
 //file ens signature "TSSFEND"
+
+//#include "asaxc.h"
+//#include "effectk.h"
+#include "harmonica.h"
+//#include "harpsicord.h"
 
 struct count_range countAndRange = {SAMPLE_COUNT, RANGE};
 
