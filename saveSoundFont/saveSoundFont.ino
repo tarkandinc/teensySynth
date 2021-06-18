@@ -12,8 +12,6 @@
 //sample data in sampleCount * int16_t
 //file ens signature "TSSFEND"
 
-char fileName[] = FILE_NAME;
-byte nameLength = NAME_LENGTH;
 struct count_range countAndRange = {SAMPLE_COUNT, RANGE};
 
 void setup()
