@@ -34,16 +34,22 @@ void loadSoundFont(byte fileNo, byte sampleNo)
     for(int i=-1; i<fileNo; i++)
       sampleFile = rootDir.openNextFile();
     sampleFile.read((char*)&soundFont, sizeof(sample_data));
+#ifdef PRINT_FILE_MESSAGES
     Serial.println(soundFont.INDEX_BITS, DEC);
+#endif
     sampleFile.read((char*)&countAndRange, sizeof(count_range));
+#ifdef PRINT_FILE_MESSAGES
     Serial.println(countAndRange.sampleCount, DEC);
+#endif
     if(countAndRange.sampleCount < MAX_SAMPLE_COUNT)
     {
       //sampleFile.read((char*)soundSample, countAndRange.sampleCount * sizeof(int16_t)*2);
       for(int i=0; i<countAndRange.sampleCount; i++)
       {
         sampleFile.read((char*)(&(soundSample[i])), sizeof(uint32_t));
+#ifdef PRINT_FILE_MESSAGES        
         Serial.println(soundSample[i], HEX);
+#endif
       }
       soundFont.sample = (uint16_t*)soundSample;
       instrument.sample_count = 1;
@@ -52,7 +58,6 @@ void loadSoundFont(byte fileNo, byte sampleNo)
       for(int i=0; i<5; i++)
         wavetables[i].setInstrument((const AudioSynthWavetable::instrument_data&)(instrument));
     }
-    Serial.println(soundSample[20], HEX);
     sampleFile.close();
     rootDir.close();
 }
