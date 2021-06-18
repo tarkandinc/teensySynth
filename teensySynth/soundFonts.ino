@@ -14,54 +14,45 @@
 //sample data in sampleCount * int16_t
 //file ens signature "TSSFEND"
 
-struct sample_data soundFont[INSTRUMENT_COUNT];
-struct instrument_data instrument[INSTRUMENT_COUNT];
-uint8_t sampleRange[INSTRUMENT_COUNT];
-int16_t sampleCount[INSTRUMENT_COUNT];
-int16_t soundSample[INSTRUMENT_COUNT][MAX_SAMPLE_COUNT];
+struct sample_data soundFont;
+struct instrument_data instrument;
+struct count_range countAndRange;
+uint32_t soundSample[MAX_SAMPLE_COUNT];
 
 void loadSoundFont(byte fileNo, byte sampleNo)
 {
-    char signature[5];
-    char endSignature[8];
-    signature[4] = 0;
-    endSignature[7] = 0;
-    byte nameLength;
-    char name[32];
+    //char signature[5];
+    //char endSignature[8];
+    //signature[4] = 0;
+    //endSignature[7] = 0;
+    //byte nameLength;
+    //char name[32];
     
     //navigate to file
     File rootDir = SD.open("/");
     File sampleFile;
     for(int i=-1; i<fileNo; i++)
       sampleFile = rootDir.openNextFile();
-    //read soundFont data
-    sampleFile.read(signature, sizeof("TSSF"));
-    if(strncmp(signature,"TSSF", 4) == 0)
+    sampleFile.read((char*)&soundFont, sizeof(sample_data));
+    Serial.println(soundFont.INDEX_BITS, DEC);
+    sampleFile.read((char*)&countAndRange, sizeof(count_range));
+    Serial.println(countAndRange.sampleCount, DEC);
+    if(countAndRange.sampleCount < MAX_SAMPLE_COUNT)
     {
-      sampleFile.read(&nameLength, sizeof(byte));
-      sampleFile.read(name, sizeof(char) * nameLength);
-      sampleFile.read(&soundFont, sizeof(sample_data));
-      sampleFile.read(&sampleCount, sizeof(int16_t));//count of 
-      sampleFile.read(&sampleRange, sizeof(uint8_t));
-      if(sampleCount[sampleNo] < MAX_SAMPLE_COUNT)
+      //sampleFile.read((char*)soundSample, countAndRange.sampleCount * sizeof(int16_t)*2);
+      for(int i=0; i<countAndRange.sampleCount; i++)
       {
-        sampleFile.read(soundSample[sampleNo], sampleCount[sampleNo] * sizeof(int16_t)*2);
-        soundFont[sampleNo].sample = soundSample[sampleNo];
-        instrument[sampleNo].sample_count = 1;
-        instrument[sampleNo].sample_note_ranges = &(sampleRange[sampleNo]);
-        instrument[sampleNo].samples = &(soundFont[sampleNo]);
-        for(int i=0; i<5; i++)
-          wavetables[i].setInstrument((const AudioSynthWavetable::instrument_data&)(instrument[sampleNo]));
-        sampleFile.read(endSignature, sizeof("TSSFEND"));
-        if(strncmp(endSignature,"TSSFEND", 7) == 0)
-        {
-  #ifdef PRINT_MIDI_MESSAGES
-          Serial.print(sampleFile.name());
-          Serial.println(" loaded");
-  #endif
-        }
+        sampleFile.read((char*)(&(soundSample[i])), sizeof(uint32_t));
+        Serial.println(soundSample[i], HEX);
       }
+      soundFont.sample = (uint16_t*)soundSample;
+      instrument.sample_count = 1;
+      instrument.sample_note_ranges = (uint8_t*)&(countAndRange.sampleRange);
+      instrument.samples = &(soundFont);
+      for(int i=0; i<5; i++)
+        wavetables[i].setInstrument((const AudioSynthWavetable::instrument_data&)(instrument));
     }
+    Serial.println(soundSample[20], HEX);
     sampleFile.close();
     rootDir.close();
 }
