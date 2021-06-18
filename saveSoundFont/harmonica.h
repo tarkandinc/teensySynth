@@ -1,7 +1,8 @@
 #define SAMPLE_COUNT 512
 #define RANGE 127
 
-#define FILE_NAME "harpsicord.tsf"
+//#define FILE_NAME "harmonica.tsf"
+#define FILE_NAME "harmonic.tsf"
 
 uint32_t soundSample[SAMPLE_COUNT] = {
 0x00000000,0xfe50fc97,0x01450058,0x03e003c8,0x0639054e,0x076007ae,0x066806d2,0x02e4058d,

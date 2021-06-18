@@ -1,7 +1,8 @@
 #define SAMPLE_COUNT 896
 #define RANGE 127
 
-#define FILE_NAME "htrumpetax.tsf"
+//#define FILE_NAME "htrumpetax.tsf"
+#define FILE_NAME "htrumpet.tsf"
 
 uint32_t soundSample[SAMPLE_COUNT] = {
 0x00000000,0x002c002e,0x0029002c,0x00290029,0x00280029,0x00290029,0x00290028,0x0029002a,

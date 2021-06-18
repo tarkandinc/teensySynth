@@ -1,7 +1,8 @@
 #define SAMPLE_COUNT 35456
 #define RANGE 127
 
-#define FILE_NAME "synthstring.h"
+//#define FILE_NAME "synthstring.h"
+#define FILE_NAME "synthstr.h"
 
 uint32_t soundSample[SAMPLE_COUNT] = {
 0x261826c0,0x25092572,0x22db240c,0x1e0c20aa,0x1a131ba6,0x16331875,0x10551339,0x0aba0d45,
