@@ -56,8 +56,14 @@ struct sample_data
 struct instrument_data
 {
   uint8_t sample_count;
-  uint8_t* sample_note_ranges;
+  uint8_t sample_note_ranges;
   struct sample_data* samples;
+};
+
+struct count_range
+{
+  int sampleCount;
+  int sampleRange;  
 };
 
 #endif
