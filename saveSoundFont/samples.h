@@ -6,10 +6,6 @@
 
 extern struct sample_data sample;
 
-extern int16_t sampleCount;
-
-extern uint8_t range;
-
 extern struct instrument_data instrument;
 
 extern uint32_t soundSample[640];
