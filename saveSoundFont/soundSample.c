@@ -5,8 +5,6 @@
 #include <stdint.h>
 #include <WProgram.h>
 
-struct instrument_data instrument = {1, RANGE, NULL };
-
 struct sample_data sample = {
     (int16_t*)soundSample, // sample
     true, // LOOP
