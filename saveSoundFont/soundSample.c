@@ -5,11 +5,7 @@
 #include <stdint.h>
 #include <WProgram.h>
 
-uint8_t range = RANGE;
-
-int16_t sampleCount = SAMPLE_COUNT;
-
-struct instrument_data instrument = {1, &range, &sample };
+struct instrument_data instrument = {1, RANGE, NULL };
 
 struct sample_data sample = {
     (int16_t*)soundSample, // sample
