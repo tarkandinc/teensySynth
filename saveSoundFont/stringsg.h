@@ -1,7 +1,7 @@
 #define SAMPLE_COUNT 4736
 #define RANGE 127
 
-#define FILE_NAME "stringsg.h"
+#define FILE_NAME "stringsg.tsf"
 
 uint32_t soundSample[SAMPLE_COUNT] = {
 0x00000000,0x005d0181,0x002affba,0x02b60251,0x006401ff,0x02c00134,0x0211022f,0x04ed0455,

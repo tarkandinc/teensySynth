@@ -1,8 +1,8 @@
 #define SAMPLE_COUNT 1152
 #define RANGE 127
 
-//#define FILE_NAME "slapbassc.h"
-#define FILE_NAME "slapbass.h"
+//#define FILE_NAME "slapbassc.tsf"
+#define FILE_NAME "slapbass.tsf"
 
 uint32_t soundSample[SAMPLE_COUNT] = {
 0x00000000,0xf44af516,0xf470f3f3,0xf76ef4cf,0xf854f6e2,0xf952f873,0xf8fcf922,0xf945fc69,

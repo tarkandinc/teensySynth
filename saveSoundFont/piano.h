@@ -1,7 +1,7 @@
 #define SAMPLE_COUNT 8704
 #define RANGE 127
 
-#define FILE_NAME "piano.h"
+#define FILE_NAME "piano.tsf"
 
 uint32_t soundSample[SAMPLE_COUNT] = {
 0x00000000,0xff2cfe83,0x006fffd0,0x01b0008d,0x03ec01fd,0x060e06f1,0x080b057c,0x036a0618,

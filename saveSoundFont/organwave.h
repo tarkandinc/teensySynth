@@ -1,8 +1,8 @@
 #define SAMPLE_COUNT 1408
 #define RANGE 127
 
-//#define FILE_NAME "organwave.h"
-#define FILE_NAME "organwav.h"
+//#define FILE_NAME "organwave.tsf"
+#define FILE_NAME "organwav.tsf"
 
 uint32_t soundSample[SAMPLE_COUNT] = {
 0x00000000,0x03960220,0xfb1300bc,0x04e8fdf9,0xf0390002,0x0897f0cb,0x03e20c6c,0x0059fe61,

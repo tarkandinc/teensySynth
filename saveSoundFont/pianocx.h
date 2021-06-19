@@ -1,7 +1,7 @@
 #define SAMPLE_COUNT 10880
 #define RANGE 127
 
-#define FILE_NAME"pianocx.h"
+#define FILE_NAME"pianocx.tsf"
 
 uint32_t soundSample[SAMPLE_COUNT] = {
 0x00000000,0xff8eff67,0xfffcffc1,0x0236007a,0xff8b0282,0x0197feda,0x03b801a6,0x0435050d,
