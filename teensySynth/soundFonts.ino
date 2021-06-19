@@ -32,10 +32,25 @@ void loadSoundFont(byte fileNo, byte sampleNo)
     File rootDir = SD.open("/");
     File sampleFile;
     for(int i=-1; i<fileNo; i++)
+    {
       sampleFile = rootDir.openNextFile();
+      if(sampleFile.isDirectory())
+      {
+        i--;
+        continue;
+      }
+      if(sampleFile.name()[0] == '_' || sampleFile.name()[0] == '~')
+      {
+        i--;
+        continue;
+      }
+    }
+#ifdef PRINT_FILE_MESSAGES
+    Serial.println(sampleFile.name());
+#endif
     sampleFile.read((char*)&soundFont, sizeof(sample_data));
 #ifdef PRINT_FILE_MESSAGES
-    Serial.println(soundFont.INDEX_BITS, DEC);
+    //Serial.println(soundFont.INDEX_BITS, DEC);
 #endif
     sampleFile.read((char*)&countAndRange, sizeof(count_range));
 #ifdef PRINT_FILE_MESSAGES
@@ -48,10 +63,12 @@ void loadSoundFont(byte fileNo, byte sampleNo)
       {
         sampleFile.read((char*)(&(soundSample[i])), sizeof(uint32_t));
 #ifdef PRINT_FILE_MESSAGES        
-        Serial.println(soundSample[i], HEX);
+        //Serial.println(soundSample[i], HEX);
 #endif
       }
-#ifdef PRINT_FILE_MESSAGES        
+#ifdef PRINT_FILE_MESSAGES
+        Serial.print(sampleFile.name());
+        Serial.print(": ");        
         Serial.print(countAndRange.sampleCount, DEC);
         Serial.println(" samples loaded");
 #endif      

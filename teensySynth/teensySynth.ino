@@ -57,7 +57,8 @@ void setup()
 
     initAudioFunctions();
     loadSoundFont(0,0);
-    //loadSoundFont(1,1);
+    /*for(int i=0; i<14; i++)
+      loadSoundFont(i,0);*/
 }
 
 void loop()
