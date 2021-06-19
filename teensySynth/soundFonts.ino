@@ -51,6 +51,10 @@ void loadSoundFont(byte fileNo, byte sampleNo)
         Serial.println(soundSample[i], HEX);
 #endif
       }
+#ifdef PRINT_FILE_MESSAGES        
+        Serial.print(countAndRange.sampleCount, DEC);
+        Serial.println(" samples loaded");
+#endif      
       soundFont.sample = (uint16_t*)soundSample;
       instrument.sample_count = 1;
       instrument.sample_note_ranges = (uint8_t*)&(countAndRange.sampleRange);
