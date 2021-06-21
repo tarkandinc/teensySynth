@@ -8,6 +8,8 @@
 #define PRINT_MIDI_MESSAGES
 #define PRINT_FILE_MESSAGES
 
+//#define FAST_NOTE_CONVERSION
+
 #define I2C_PT8211
 
 #endif
