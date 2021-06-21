@@ -7,8 +7,7 @@
 //soundFont data as sample_data struct
 //sampleCount in int16_t
 //sampleRange in uint8_t
-//sample data in sampleCount * int16_t
-//file ens signature "TSSFEND"
+//sample data in sampleCount * int32_t
 
 //ENABLE ONLY ONE SOUND SAMPLE AT A TIME
 //#include "asaxc.h"

@@ -4,15 +4,12 @@
 #include "soundFonts.h"
 #include "audioDesign.h"
 
+
 //Sound File will be formated as
-//file signature "TSSF"
-//soundFontNameSize in byte
-//soundFontName in soundFontNameSize * byte
 //soundFont data as sample_data struct
 //sampleCount in int16_t
 //sampleRange in uint8_t
-//sample data in sampleCount * int16_t
-//file ens signature "TSSFEND"
+//sample data in sampleCount * int32_t
 
 struct sample_data soundFont;
 struct instrument_data instrument;
