@@ -1,20 +1,22 @@
+
+#include <Audio.h>
+#include <USBHost_t36.h>
+#include <SD.h>
 #include "teensySynth.h"
 #include "midiHandlers.h"
 #include "audioFunctions.h"
 #include "soundFonts.h"
-#include <USBHost_t36.h>
-#include <SD.h>
+#include "teensySynth.h"
+#include "audioDesign.h"
 
 USBHost teensyUsbHost;
 USBHub hub1(teensyUsbHost);
 USBHub hub2(teensyUsbHost);
 MIDIDevice teensyMidi(teensyUsbHost);
 
-#include "teensySynth.h"
-#include "audioDesign.h"
-
 void setup()
 {
+    AudioMemory(128);
 #ifdef PRINT_MIDI_MESSAGES
     Serial.begin(115200);
 #endif
