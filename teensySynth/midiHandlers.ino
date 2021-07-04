@@ -17,23 +17,28 @@ void teensyMidiNoteOn(byte channel, byte note, byte velocity)
 #endif
     //todo: channel control
     //todo: find free sound
+    AudioNoInterrupts();
     byte soundNo = findFreeSound();
     if(soundNo != -1)
     {
       if(channel == 1)
       {
         mixers[soundNo].gain(0,1);
-        wavetables[soundNo].playFrequency(noteToFreqConv(note), velocity);
+        wavetables[soundNo].playFrequency(noteToFreqConv(note), velocity2amplitude[velocity]);
+        envelopes[soundNo].noteOn();
+        assignPlayingSound(note, channel, soundNo);
       }
       else if(channel == 2)
       {
         mixers[soundNo].gain(1,1);
-        strings[soundNo].noteOn(noteToFreqConv(note), velocity);
+        strings[soundNo].noteOn(noteToFreqConv(note), velocity2amplitude[velocity]);
+        envelopes[soundNo].noteOn();
+        assignPlayingSound(note, channel, soundNo);
       }
       else {}//do nothing
-      assignPlayingSound(note, channel, soundNo);
+      AudioInterrupts();
 #ifdef PRINT_MIDI_MESSAGES
-      Serial.print("Sound ");
+      Serial.print("Sound on ");
       Serial.println(soundNo, DEC);    
 #endif
     }
@@ -50,6 +55,7 @@ void teensyMidiNoteOff(byte channel, byte note, byte velocity)
     Serial.println(velocity, DEC);
 #endif
     //find which sound will be turned off
+    AudioNoInterrupts();
     byte soundNo = findPlayingSound(note, channel);
     if(soundNo != -1)
     {
@@ -57,15 +63,23 @@ void teensyMidiNoteOff(byte channel, byte note, byte velocity)
       {
         wavetables[soundNo].stop();
         mixers[soundNo].gain(0,0);
+        envelopes[soundNo].noteOff();
+        stopSound(soundNo);
       }
       else if(channel == 2)
       {
         strings[soundNo].noteOff(0);
         mixers[soundNo].gain(1,0);
+        envelopes[soundNo].noteOff();
+        stopSound(soundNo);
       }
       else
       {}//do nothing
-      stopSound(soundNo);  
+      AudioInterrupts();
+#ifdef PRINT_MIDI_MESSAGES
+      Serial.print("Sound off ");
+      Serial.println(soundNo, DEC);    
+#endif      
     }
 }
 
