@@ -21,9 +21,23 @@ static void setupMixers(void)
     mixers[i].gain(0, 1);*/
 }
 
+static void setEnvelopes(void)
+{
+   for(int i=0; i<5; i++)
+   {
+      envelopes[i].delay(0);
+      envelopes[i].attack(10.5);
+      envelopes[i].hold(2.5);
+      envelopes[i].decay(35);
+      envelopes[i].release(300);
+      envelopes[i].releaseNoteOn(0);
+   }
+}
+
 void initAudioFunctions(void)
 {
   setupMixers();
+  setEnvelopes();
   amp1.gain(1);
   //envelopes left at default default values
   chorus1.begin(chorusBuffer, CHORUS_BLOCK_SAMPLE,1);
@@ -31,4 +45,5 @@ void initAudioFunctions(void)
   reverb1.reverbTime(0);
   freeverbs1.roomsize(0);
   freeverbs1.damping(0);
+  AudioInterrupts();
 }
