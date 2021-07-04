@@ -4,6 +4,7 @@
 #include "soundFonts.h"
 #include <USBHost_t36.h>
 #include <SD.h>
+#include <Audio.h>
 
 USBHost teensyUsbHost;
 USBHub hub1(teensyUsbHost);
@@ -15,6 +16,7 @@ MIDIDevice teensyMidi(teensyUsbHost);
 
 void setup()
 {
+    AudioMemory(NUMBER_OF_BLOCKS);
 #ifdef PRINT_MIDI_MESSAGES
     Serial.begin(115200);
 #endif

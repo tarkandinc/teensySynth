@@ -1,5 +1,6 @@
 #include "teensySynth.h"
 #include "audioDesign.h"
+#include "noteLookupTable.h"
 
 void teensyMidiNoteOn(byte channel, byte note, byte velocity)
 {
@@ -14,7 +15,28 @@ void teensyMidiNoteOn(byte channel, byte note, byte velocity)
     Serial.print(", velocity=");
     Serial.println(velocity, DEC);
 #endif
-    //example: wavetables[0].amplitude(100);
+    //todo: channel control
+    //todo: find free sound
+    byte soundNo = findFreeSound();
+    if(soundNo != -1)
+    {
+      if(channel == 1)
+      {
+        mixers[soundNo].gain(0,1);
+        wavetables[soundNo].playFrequency(noteToFreqConv(note), velocity);
+      }
+      else if(channel == 2)
+      {
+        mixers[soundNo].gain(1,1);
+        strings[soundNo].noteOn(noteToFreqConv(note), velocity);
+      }
+      else {}//do nothing
+      assignPlayingSound(note, channel, soundNo);
+#ifdef PRINT_MIDI_MESSAGES
+      Serial.print("Sound ");
+      Serial.println(soundNo, DEC);    
+#endif
+    }
 }
 
 void teensyMidiNoteOff(byte channel, byte note, byte velocity)
@@ -27,6 +49,24 @@ void teensyMidiNoteOff(byte channel, byte note, byte velocity)
     Serial.print(", velocity=");
     Serial.println(velocity, DEC);
 #endif
+    //find which sound will be turned off
+    byte soundNo = findPlayingSound(note, channel);
+    if(soundNo != -1)
+    {
+      if(channel == 1)
+      {
+        wavetables[soundNo].stop();
+        mixers[soundNo].gain(0,0);
+      }
+      else if(channel == 2)
+      {
+        strings[soundNo].noteOff(0);
+        mixers[soundNo].gain(1,0);
+      }
+      else
+      {}//do nothing
+      stopSound(soundNo);  
+    }
 }
 
 void teensyMidiControlChange(byte channel, byte control, byte value)
@@ -38,16 +78,6 @@ void teensyMidiControlChange(byte channel, byte control, byte value)
     Serial.print(control, DEC);
     Serial.print(", value=");
     Serial.println(value, DEC);
-#endif
-}
-
-void teensyMidiProgramChange(byte channel, byte program)
-{
-#ifdef PRINT_MIDI_MESSAGES
-    Serial.print("Program Change, ch=");
-    Serial.print(channel, DEC);
-    Serial.print(", program=");
-    Serial.println(program, DEC);
 #endif
 }
 
@@ -69,6 +99,18 @@ void teensyMidiAfterTouchChannel(byte channel, byte pressure)
     Serial.print(", pressure=");
     Serial.println(pressure, DEC);
 #endif
+}
+
+void teensyMidiProgramChange(byte channel, byte program)
+{
+#ifdef PRINT_MIDI_MESSAGES
+    Serial.print("Program Change, ch=");
+    Serial.print(channel, DEC);
+    Serial.print(", program=");
+    Serial.println(program, DEC);
+#endif
+    //not used
+    //for changing instruments another input will be used
 }
 
 void teensyMidiAfterTouchPoly(byte channel, byte note, byte velocity)
