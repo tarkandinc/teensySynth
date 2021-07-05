@@ -229,6 +229,7 @@ AudioConnection patchCords[] = {    {wavetables[0], 0, mixers[0], 0},
                                     //Final mixer connections
                                     {finalMixers[0], 0, finalMixers[1], 0},
                                     {finalMixers[1], amp1},
+#ifdef EFFECTS_ON
                                     {amp1, 0, chorus1, 0},
                                     //Effects conections
                                     {chorus1, flange1},
@@ -236,4 +237,9 @@ AudioConnection patchCords[] = {    {wavetables[0], 0, mixers[0], 0},
                                     {reverb1, freeverbs1},
                                     //Output connections
                                     {freeverbs1, 0, i2s1, 0}, 
-                                    {freeverbs1, 1, i2s1, 1}                };
+                                    {freeverbs1, 1, i2s1, 1}
+#else
+                                    {amp1, 0, i2s1, 0},
+                                    {amp1, 0, i2s1, 1}
+#endif
+                               };

@@ -8,8 +8,13 @@
 #define PRINT_MIDI_MESSAGES
 #define PRINT_FILE_MESSAGES
 
-//#define FAST_NOTE_CONVERSION
+#define FAST_NOTE_CONVERSION
 
 #define I2C_PT8211
+
+#define NUMBER_OF_BLOCKS 128
+#define NUMBER_OF_SOUNDS 5
+
+#define EFFECTS_ON
 
 #endif

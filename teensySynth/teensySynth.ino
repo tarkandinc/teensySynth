@@ -6,8 +6,9 @@
 #include "midiHandlers.h"
 #include "audioFunctions.h"
 #include "soundFonts.h"
-#include "teensySynth.h"
-#include "audioDesign.h"
+#include <USBHost_t36.h>
+#include <SD.h>
+#include <Audio.h>
 
 USBHost teensyUsbHost;
 USBHub hub1(teensyUsbHost);
@@ -16,7 +17,7 @@ MIDIDevice teensyMidi(teensyUsbHost);
 
 void setup()
 {
-    AudioMemory(128);
+    AudioMemory(NUMBER_OF_BLOCKS);
 #ifdef PRINT_MIDI_MESSAGES
     Serial.begin(115200);
 #endif
@@ -58,7 +59,7 @@ void setup()
     teensyMidi.setHandleRealTimeSystem(teensyMidiRealTimeSystem);
 
     initAudioFunctions();
-    loadSoundFont(0,0);
+    loadSoundFont(8,0);
     /*for(int i=0; i<14; i++)
       loadSoundFont(i,0);*/
 }

@@ -3,7 +3,7 @@
 #include <String.h>
 #include "soundFonts.h"
 #include "audioDesign.h"
-
+#include "teensySynth.h"
 
 //Sound File will be formated as
 //soundFont data as sample_data struct
