@@ -6,7 +6,7 @@ enum soundStatus
   SOUND_OFF,
   SOUND_ON,
   SOUND_SUSTAIN,
-  SOUND_DECAY
+  SOUND_RELEASE
 };
 
 struct sound

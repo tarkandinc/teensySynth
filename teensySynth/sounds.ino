@@ -20,7 +20,7 @@ void checkDecaySounds(void)
       Serial.print(" ");
       Serial.println(envelopes[soundNo].isActive(), DEC);
 #endif
-    if(sounds[soundNo].stat==SOUND_DECAY && envelopes[soundNo].isActive()==false)
+    if(/*sounds[soundNo].stat==SOUND_RELEASE &&*/ envelopes[soundNo].isActive()==false)
     {
       sounds[soundNo].stat = SOUND_OFF;
 #ifdef PRINT_MIDI_MESSAGES
@@ -65,8 +65,8 @@ byte findPlayingSound(byte note, byte channel)
 
 void stopSound(byte soundNo)
 {
-  //sounds[soundNo].stat = SOUND_DECAY;
-  sounds[soundNo].stat = SOUND_OFF;
+  sounds[soundNo].stat = SOUND_RELEASE;
+  //sounds[soundNo].stat = SOUND_OFF;
   sounds[soundNo].note = 0;
   sounds[soundNo].channel = 0;
 }
