@@ -17,9 +17,10 @@
 #define PIN_RIGHT 3
 #define PIN_FIRE1 4
 #define PIN_FIRE2 5
-#define PIN_LED   13
+#define PIN_STAT  13
 
 #define USB_MANUAL_SEND
+#define STATUS_BLINK
 
 //joystick status
 int jB1 = 0;
@@ -28,7 +29,9 @@ int jHat = -1;
 int jX = 1;
 int jY = 1;
 
+#ifdef STATUS_BLINK
 bool ledPin = false;
+#endif
 
 int jHatLookup[3][3] = {{315,   0,  45},
                         {270,  -1,  90},
@@ -44,17 +47,19 @@ void handleJoystick() {
   Joystick.send_now();
 #endif
 
+#ifdef STATUS_BLINK
   if(ledPin)
   {
-    digitalWrite(PIN_LED, HIGH);
+    digitalWrite(PIN_STAT, HIGH);
     ledPin = false;
   }
   else
   {
-    digitalWrite(PIN_LED, LOW);
+    digitalWrite(PIN_STAT, LOW);
     ledPin = true;
   }
 }
+#endif
 
 void setup() {
   //setup pins
@@ -65,7 +70,9 @@ void setup() {
   pinMode(PIN_FIRE1, INPUT_PULLUP);//button1
   pinMode(PIN_FIRE2, INPUT_PULLUP);//button2
 
-  pinMode(PIN_LED, OUTPUT);
+#ifdef STATUS_BLINK
+  pinMode(PIN_STAT, OUTPUT);
+#endif
 
   //joystcik manuel send mode
 #ifdef USB_MANUAL_SEND
@@ -78,10 +85,13 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
+  //default center
   jX = 1;
   jY = 1;
+  //default off
   jB1 = 0;
   jB2 = 0;
+  //read pins
   if (!digitalRead(PIN_UP))
     jY = 0;  
   if (!digitalRead(PIN_DOWN))
