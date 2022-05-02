@@ -11,13 +11,15 @@
 //J5: +5V (from board's Vin)
 //J9: GND (from boards GND)
 
-#define PIN_D0 0
-#define PIN_D1 1
-#define PIN_D2 2
-#define PIN_D3 3
-#define PIN_D4 4
-#define PIN_D5 5
-#define LED_PIN 6
+#define PIN_UP    0
+#define PIN_DOWN  1
+#define PIN_LEFT  2
+#define PIN_RIGHT 3
+#define PIN_FIRE1 4
+#define PIN_FIRE2 5
+#define PIN_LED   13
+
+#define USB_MANUAL_SEND
 
 //joystick status
 int jB1 = 0;
@@ -38,33 +40,37 @@ void handleJoystick() {
   Joystick.button(1, jB1);
   Joystick.button(2, jB2); 
   Joystick.hat(jHat);
+#ifdef USB_MANUAL_SEND
   Joystick.send_now();
+#endif
 
   if(ledPin)
   {
-    digitalWrite(LED_PIN, HIGH);
+    digitalWrite(PIN_LED, HIGH);
     ledPin = false;
   }
   else
   {
-    digitalWrite(LED_PIN, LOW);
+    digitalWrite(PIN_LED, LOW);
     ledPin = true;
   }
 }
 
 void setup() {
   //setup pins
-  pinMode(PIN_D0, INPUT_PULLUP);//up
-  pinMode(PIN_D1, INPUT_PULLUP);//down
-  pinMode(PIN_D2, INPUT_PULLUP);//left
-  pinMode(PIN_D3, INPUT_PULLUP);//right
-  pinMode(PIN_D4, INPUT_PULLUP);//button1
-  pinMode(PIN_D5, INPUT_PULLUP);//button2
+  pinMode(PIN_UP,    INPUT_PULLUP);//up
+  pinMode(PIN_DOWN,  INPUT_PULLUP);//down
+  pinMode(PIN_LEFT,  INPUT_PULLUP);//left
+  pinMode(PIN_RIGHT, INPUT_PULLUP);//right
+  pinMode(PIN_FIRE1, INPUT_PULLUP);//button1
+  pinMode(PIN_FIRE2, INPUT_PULLUP);//button2
 
-  pinMode(LED_PIN, OUTPUT);
+  pinMode(PIN_LED, OUTPUT);
 
   //joystcik manuel send mode
+#ifdef USB_MANUAL_SEND
   Joystick.useManualSend(true);
+#endif
 
   //setup timer
   myTimer.begin(handleJoystick, 20000);//50Hz refresh rate
@@ -76,17 +82,17 @@ void loop() {
   jY = 1;
   jB1 = 0;
   jB2 = 0;
-  if (!digitalRead(PIN_D0))
+  if (!digitalRead(PIN_UP))
     jY = 0;  
-  if (!digitalRead(PIN_D1))
+  if (!digitalRead(PIN_DOWN))
     jY = 2;
-  if (!digitalRead(PIN_D2))
+  if (!digitalRead(PIN_LEFT))
     jX = 0;
-  if (!digitalRead(PIN_D3))
+  if (!digitalRead(PIN_RIGHT))
     jX = 2;
   jHat = jHatLookup [jX][jY];
-  if (!digitalRead(PIN_D4))
+  if (!digitalRead(PIN_FIRE1))
     jB1 = 1;
-  if (!digitalRead(PIN_D5))
+  if (!digitalRead(PIN_FIRE2))
     jB2 = 1;   
 }
