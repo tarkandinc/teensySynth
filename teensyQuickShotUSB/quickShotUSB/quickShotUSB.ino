@@ -1,6 +1,7 @@
 //QuickShot QS-1130F
 //MSX mode (2 button)
 //pins used 0-5 (pull-up mode)
+//inputs are low active
 //0: up (J1)
 //1: down (J2)
 //2: left (J3)
@@ -22,6 +23,8 @@
 #define PIN_FIRE1 4
 #define PIN_FIRE2 5
 #define PIN_STAT  13
+
+#define HZ_50 20000
 
 #define USB_MANUAL_SEND
 #define STATUS_BLINK
@@ -78,13 +81,13 @@ void setup() {
   pinMode(PIN_STAT, OUTPUT);
 #endif
 
-  //joystcik manuel send mode
+  //joystcik manual send mode
 #ifdef USB_MANUAL_SEND
   Joystick.useManualSend(true);
 #endif
 
   //setup timer
-  myTimer.begin(handleJoystick, 20000);//50Hz refresh rate
+  myTimer.begin(handleJoystick, HZ_50);//50Hz refresh rate
 }
 
 void loop() {
@@ -92,21 +95,12 @@ void loop() {
   //default center
   jX = 1;
   jY = 1;
-  //default off
-  jB1 = 0;
-  jB2 = 0;
   //read pins
-  if (!digitalRead(PIN_UP))
-    jY = 0;  
-  if (!digitalRead(PIN_DOWN))
-    jY = 2;
-  if (!digitalRead(PIN_LEFT))
-    jX = 0;
-  if (!digitalRead(PIN_RIGHT))
-    jX = 2;
+  jY = digitalRead(PIN_UP);//if up jY=0, not jY=1
+  jY = 2 - digitalRead(PIN_DOWN) //if down jY=2, not jY=1
+  jX = digitalRead(PIN_LEFT); //if left jX=0, not jX=1
+  jX = 2 - digitalRead(PIN_RIGHT);//if right jX=2, not jX=1
   jHat = jHatLookup [jX][jY];
-  if (!digitalRead(PIN_FIRE1))
-    jB1 = 1;
-  if (!digitalRead(PIN_FIRE2))
-    jB2 = 1;   
+  jB1 = 1 - digitalRead(PIN_FIRE1);
+  jB2 = 1 - digitalRead(PIN_FIRE2);  
 }
