@@ -92,9 +92,6 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  //default center
-  jX = 1;
-  jY = 1;
   //read pins
   jY = digitalRead(PIN_UP);//if up jY=0, not jY=1
   jY = 2 - digitalRead(PIN_DOWN) //if down jY=2, not jY=1
