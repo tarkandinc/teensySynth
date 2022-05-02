@@ -12,7 +12,7 @@
 //J5: +5V (from board's Vin)
 //J9: GND (from boards GND)
 
-//DB-9 PINOUT
+//DB-9 MSX MODE PINOUT
 // UP  DN   LE  RH  5V
 //   F1  F2   0V  0V
 
