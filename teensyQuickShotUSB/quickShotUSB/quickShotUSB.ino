@@ -7,9 +7,13 @@
 //3: right (J4)
 //4: button1 (J6)
 //5: button2 (J7)
-//J8: will be GND shotrted with joystick activity
+//J8: Common (GND)
 //J5: +5V (from board's Vin)
 //J9: GND (from boards GND)
+
+//DB-9 PINOUT
+// UP  DN   LE  RH  5V
+//   F1  F2   0V  0V
 
 #define PIN_UP    0
 #define PIN_DOWN  1
