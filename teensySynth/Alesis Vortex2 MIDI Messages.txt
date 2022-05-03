@@ -1,0 +1,34 @@
+Notes [C-1-C9]:
+Press: Note On, ch=[1-2], note=[0-120], velocity=[1-127]
+AfterTouch: After Touch, ch=[1-2], pressure=[1-127-0] -> to all channels’s voices
+Release: Note Off, ch=[1-2], note=[0-120], velocity=0
+
+Pads [P1-P8]:
+Press: Note On, ch=10, note=[36-43], velocity=[1-127]
+Release: Note Off, ch=10, note=[36-43], velocity=0
+
+Sliders[F1-F8]:
+Slide: Control Change, ch=1, control=[14-21], value=[0-127]
+
+Program Change[P1-P25]:
+Press: Control Change, ch=1, control=0, value=0
+       Control Change, ch=1, control=32, value=0
+       Program Change, ch=1, program=[0-24]
+
+Sustain:
+Press: Control Change, ch=1, control=64, value=127
+Release: Control Change, ch=1, control=64, value=0
+
+PitchBend[Push-Pull]:
+Change: Pitch Change, ch=1, pitch=[-8192-8191] -> 0: center
+
+Ribbon[Far-Near]:
+Slide 1: Control Change, ch=1, control=1, value=[0-127]
+Slide 2: Pitch Change, ch=1, pitch=[-8192-8191]
+Slide 3: Control Change, ch=1, control=22, value=[0-127]
+
+Tilt[0-90]:
+Tilt: Control Change, ch=1, control=1, value=[0-127]
+
+Volume[Far-Near]:
+Slide: Control Change, ch=1, control=7, value=[0-127]
