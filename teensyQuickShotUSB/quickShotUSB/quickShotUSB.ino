@@ -14,7 +14,7 @@
 
 //DB-9 MSX MODE PINOUT
 // UP  DN   LE  RH  5V
-//   F1  F2   0V  0V
+//   F1  F2   CM  0V
 
 #define PIN_UP    0
 #define PIN_DOWN  1
@@ -40,13 +40,25 @@ int jY = 1;
 bool ledPin = false;
 #endif
 
+//dpad 0 is up
 int jHatLookup[3][3] = {{315,   0,  45},
                         {270,  -1,  90},
                         {225, 180, 135}};
 
 IntervalTimer myTimer;
 
-void handleJoystick() {
+void handleJoystick()
+{
+  //read pins
+  jY = digitalRead(PIN_UP);//if up jY=0, not jY=1
+  jY = 2 - digitalRead(PIN_DOWN);//if down jY=2, not jY=1
+  jX = digitalRead(PIN_LEFT);//if left jX=0, not jX=1
+  jX = 2 - digitalRead(PIN_RIGHT);//if right jX=2, not jX=1
+  jHat = jHatLookup [jX][jY];
+  jB1 = 1 - digitalRead(PIN_FIRE1);
+  jB2 = 1 - digitalRead(PIN_FIRE2);
+  
+  //usb josytick data
   Joystick.button(1, jB1);
   Joystick.button(2, jB2); 
   Joystick.hat(jHat);
@@ -55,20 +67,15 @@ void handleJoystick() {
 #endif
 
 #ifdef STATUS_BLINK
-  if(ledPin)
-  {
+  if(ledPin=!ledPin)
     digitalWrite(PIN_STAT, HIGH);
-    ledPin = false;
-  }
   else
-  {
     digitalWrite(PIN_STAT, LOW);
-    ledPin = true;
-  }
 }
 #endif
 
-void setup() {
+void setup()
+{
   //setup pins
   pinMode(PIN_UP,    INPUT_PULLUP);//up
   pinMode(PIN_DOWN,  INPUT_PULLUP);//down
@@ -90,14 +97,7 @@ void setup() {
   myTimer.begin(handleJoystick, HZ_50);//50Hz refresh rate
 }
 
-void loop() {
-  // put your main code here, to run repeatedly:
-  //read pins
-  jY = digitalRead(PIN_UP);//if up jY=0, not jY=1
-  jY = 2 - digitalRead(PIN_DOWN) //if down jY=2, not jY=1
-  jX = digitalRead(PIN_LEFT); //if left jX=0, not jX=1
-  jX = 2 - digitalRead(PIN_RIGHT);//if right jX=2, not jX=1
-  jHat = jHatLookup [jX][jY];
-  jB1 = 1 - digitalRead(PIN_FIRE1);
-  jB2 = 1 - digitalRead(PIN_FIRE2);  
+void loop()
+{
+  // put your main code here, to run repeatedly:  
 }
